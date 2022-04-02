@@ -8,15 +8,17 @@ public class player_char : MonoBehaviour
 
     public Rigidbody player_body;   
     public int speed = 10;
+    public float time_alive;
     void Start()
     {
-        
+        time_alive = 0;
     }
     void Update()
     {
         player_vector = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 
         mover_player();
+        time_alive++;
     }
 
     public void mover_player()
