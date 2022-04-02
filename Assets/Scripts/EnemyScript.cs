@@ -8,7 +8,7 @@ public class EnemyScript : MonoBehaviour
     public float MovementSpeed;
     public GameObject Player;
     public Rigidbody RB;
-    public GameObject[] wall;
+    
     
     // Start is called before the first frame update
     void Start()
