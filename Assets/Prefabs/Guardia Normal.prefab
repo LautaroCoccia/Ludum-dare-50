@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4371345180282245197}
   - component: {fileID: 4371345180282245199}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Guardia Normal
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

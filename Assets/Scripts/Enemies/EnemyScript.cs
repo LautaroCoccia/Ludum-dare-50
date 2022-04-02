@@ -5,58 +5,63 @@ using UnityEngine.AI;
 
 public class EnemyScript : MonoBehaviour
 {
-    public float MovementSpeed;
-    public GameObject Player;
-    Rigidbody RB;
+    [SerializeField] protected float MovementSpeed;
+    [SerializeField] protected GameObject Player;
+    protected Rigidbody RB;
+    protected Coroutine StunnedRoutine;
+    protected bool stunned;
     
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         RB = gameObject.GetComponent<Rigidbody>();
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        RB.velocity = new Vector3(Player.transform.position.x- transform.position.x, 0, Player.transform.position.z - transform.position.z).normalized * MovementSpeed;
-    }
+    
 
     public void Damaged()
     {
         //Efectos al destruir a este enemigo
         Destroy(gameObject);
     }
-    public void Stunned()
+    public void Stunned(float EffectTime)
     {
+        if(StunnedRoutine!= null)
+        {
+            StopCoroutine(StunnedRoutine);
+        }
         //Efectos al estunear a este enemigo
-        StartCoroutine(StunnedEnemy());
+        StunnedRoutine = StartCoroutine(StunnedEnemy(EffectTime));
     }
 
-    IEnumerator StunnedEnemy()
+    IEnumerator StunnedEnemy(float EffectTime)
     {
+        stunned = true;
+        float _savedSpeed = MovementSpeed;
         MovementSpeed = 0;
-        float Timer = 5;
+        float Timer = EffectTime;
         while (Timer > 0)
         {
             yield return 0;
             Timer -= Time.deltaTime;
         }
-
-        MovementSpeed -= 5;
+        stunned = false;
+        MovementSpeed = _savedSpeed;
     }
 
 
-    private void OnCollisionEnter(Collision collision)
+    protected void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject == Player)
+        if(collision.gameObject == Player & StunnedRoutine == null)
         {
             collision.gameObject.GetComponent<PlayerMovement>().OnPlayerDamaged(false);
         }
     }
-    private void OnCollisionStay(Collision collision)
+    protected void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject == Player)
+        if (collision.gameObject == Player & StunnedRoutine == null)
         {
             collision.gameObject.GetComponent<PlayerMovement>().OnPlayerDamaged(false);
         }
