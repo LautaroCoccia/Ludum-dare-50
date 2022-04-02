@@ -25,10 +25,10 @@ public class EnemyTaser : DefaultEnemy
                 if (Vector3.Distance(Player.transform.position, transform.position) < EnemyRange)
                 {
                     Vector3 LockOn = Player.transform.position;
-                    float DistanceToShot = 
+                    //float DistanceToShot = 
                     RB.velocity = Vector3.zero;
                     yield return new WaitForSeconds(Windup);
-                    Physics.BoxCastAll();
+                    //Physics.BoxCastAll();
                     yield return new WaitForSeconds(ActiveFrames);
 
                     yield return new WaitForSeconds(fallBack);
