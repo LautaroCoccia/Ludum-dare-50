@@ -6,13 +6,12 @@ using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] int lives = 3;
-    [SerializeField] int score = 0;
-    [SerializeField] int enemiesLeft = 0;
+    [SerializeField] float miliSeconds = 0;
+    [SerializeField] int seconds = 0;
+    [SerializeField] int minutes = 0;
 
-    [SerializeField] private TextMeshProUGUI UIScore;
-    [SerializeField] private TextMeshProUGUI UIHealth;
-    [SerializeField] private TextMeshProUGUI UIEnemies;
+    [SerializeField] private TextMeshProUGUI UITime;
+    
     [SerializeField] private TextMeshProUGUI UIExtras;
     [SerializeField] private GameObject PauseMenuUI;
     [SerializeField] private GameObject QuitMenuUI;
@@ -20,7 +19,6 @@ public class LevelManager : MonoBehaviour
 
     private static bool pause = false;
     private static LevelManager _instanceLevelManager;
-    private const int minLives = 1;
     public static LevelManager Get()
     {
         return _instanceLevelManager;
@@ -38,8 +36,6 @@ public class LevelManager : MonoBehaviour
     }
     private void Start()
     {
-        UIHealth.text = ("Lives: " + lives);
-        UIEnemies.text = ("Left: " + enemiesLeft);
     }
     private void Update()
     {
@@ -47,30 +43,29 @@ public class LevelManager : MonoBehaviour
         {
             SetPause();
         }
-    }
-    public void StartEnemies()
-    {
-        enemiesLeft++;
-    }
-    public void UpdateEnemies()
-    {
-        enemiesLeft--;
-        UIEnemies.text = ("Left: " + enemiesLeft);
-    }
-    public void UpdateScore(int SCORE)
-    {
-        score += SCORE;
-        UIScore.text = ("Score: " + score);
-    }
-    public void UpdateHealth()
-    {
-        lives--;
-        if(lives< minLives)
+        if(!pause)
         {
-            GameOver();
+            if (miliSeconds < 1)
+                miliSeconds += Time.deltaTime;
+            else
+            {
+                miliSeconds = 0;
+                seconds++;
+                if (seconds > 59)
+                {
+                    seconds = 0;
+                    minutes++;
+                }
+                UpdateTime(minutes, seconds);
+            }
         }
-        UIHealth.text = ("Lives: " + lives);
     }
+    private void UpdateTime(int minutes, int seconds)
+    {
+        //UITime.text = minutes.ToString() + ":" + seconds.ToString();
+        Debug.Log(minutes.ToString() + ":" + seconds.ToString());
+    }
+    
     private void SetTimeScale(int scale)
     {
         Time.timeScale = scale;
@@ -78,7 +73,7 @@ public class LevelManager : MonoBehaviour
     private void GameOver()
     {
         SetTimeScale(0);
-        GameOverMenuUI.SetActive(true);
+        //GameOverMenuUI.SetActive(true);
     }
     public void SetPause()
     {
@@ -86,13 +81,13 @@ public class LevelManager : MonoBehaviour
         if (pause)
         {
             SetTimeScale(0);
-            PauseMenuUI.SetActive(pause);
+            //PauseMenuUI.SetActive(pause);
         }
         else
         {
             SetTimeScale(1);
-            PauseMenuUI.SetActive(pause);
-            QuitMenuUI.SetActive(pause);
+            //PauseMenuUI.SetActive(pause);
+            //QuitMenuUI.SetActive(pause);
         }
     }
 }
