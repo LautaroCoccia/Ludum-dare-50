@@ -8,6 +8,7 @@ public class EnemyScript : MonoBehaviour
     public float MovementSpeed;
     public GameObject Player;
     Rigidbody RB;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,13 +27,38 @@ public class EnemyScript : MonoBehaviour
         //Efectos al destruir a este enemigo
         Destroy(gameObject);
     }
+    public void Stunned()
+    {
+        //Efectos al estunear a este enemigo
+        StartCoroutine(StunnedEnemy());
+    }
+
+    IEnumerator StunnedEnemy()
+    {
+        MovementSpeed = 0;
+        float Timer = 5;
+        while (Timer > 0)
+        {
+            yield return 0;
+            Timer -= Time.deltaTime;
+        }
+
+        MovementSpeed -= 5;
+    }
+
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject == Player)
         {
-            //playercollision.damage();
-                //FIN DE LA PARTIDA
+            collision.gameObject.GetComponent<PlayerMovement>().OnPlayerDamaged(false);
+        }
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject == Player)
+        {
+            collision.gameObject.GetComponent<PlayerMovement>().OnPlayerDamaged(false);
         }
     }
 }
