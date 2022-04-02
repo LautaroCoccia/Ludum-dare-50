@@ -2,31 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class carrito : MonoBehaviour
+public class carrito_horizontal : MonoBehaviour
 {
     private Vector3 carrito_vector;
-    private Vector3 carrito_vector_recto = new Vector3(0,0,-1);
-    private Vector3 carrito_vector_inverso = new Vector3(0, 0, 1);
     public GameObject Player;
     public Rigidbody carrito_rigid_body;
     public int speed = 8;
-    
-    
+
+
     void Start()
     {
-        if (transform.position.z >= 10)
+        if (transform.position.z <= -1)
         {
-            carrito_vector = carrito_vector_recto;
-        }
-        else if (transform.position.z <= -1)
-        {
-            carrito_vector = carrito_vector_recto;
             speed = speed * -1;
         }
     }
 
     void Update()
     {
+        carrito_vector = new Vector3(1, 0, 0);
         carrito_run_run();
     }
 

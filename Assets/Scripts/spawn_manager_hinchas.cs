@@ -2,42 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class spawn_manager : MonoBehaviour
+public class spawn_manager_hinchas : MonoBehaviour
 {
     public GameObject Enemies;
     public bool IsSpawningEnemies;
     public int[] cantEnemies;
     public int enemycounter;
-    public int WaiTime = 2;
+    public int WaiTime = 5;
     public Transform[] spawners;
 
     public enum ActualEnemyState
     {
-        easy,
-        normal,
-        hard
+        policia,
+        hinchas
     }
     public ActualEnemyState state;
 
     void Start()
     {
         StartCoroutine(SpawnEnemies());
-        
+        state = ActualEnemyState.policia;
     }
 
     public void WaitTime(ActualEnemyState state)
     {
         switch (state)
         {
-            case ActualEnemyState.easy:
+            case ActualEnemyState.policia:
                 WaiTime = 5;
                 break;
-            case ActualEnemyState.normal:
+            case ActualEnemyState.hinchas:
                 WaiTime = 3;
                 break;
-            case ActualEnemyState.hard:
+            /*case ActualEnemyState.hincholicias:
                 WaiTime = 1;
-                break;
+                break;*/
             default:
                 break;
         }
@@ -52,10 +51,10 @@ public class spawn_manager : MonoBehaviour
             {
                 Instantiate(Enemies, spawners[Random.Range(0, spawners.Length)].position, Quaternion.identity);
                 enemycounter++;
+                if (enemycounter == 5) { state = ActualEnemyState.hinchas; }
                 WaitTime(state);
                 yield return new WaitForSeconds(WaiTime);
             }
         }
     }
-
 }
