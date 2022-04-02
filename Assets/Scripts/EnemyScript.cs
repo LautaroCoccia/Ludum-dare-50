@@ -5,9 +5,10 @@ using UnityEngine.AI;
 
 public class EnemyScript : MonoBehaviour
 {
-    public float MovementSpeed;
-    public GameObject Player;
+    [SerializeField] float MovementSpeed;
+    [SerializeField] GameObject Player;
     Rigidbody RB;
+    private Coroutine StunnedRoutine;
     
     // Start is called before the first frame update
     void Start()
@@ -29,12 +30,17 @@ public class EnemyScript : MonoBehaviour
     }
     public void Stunned()
     {
+        if(StunnedRoutine!= null)
+        {
+            StopCoroutine(StunnedRoutine);
+        }
         //Efectos al estunear a este enemigo
-        StartCoroutine(StunnedEnemy());
+        StunnedRoutine = StartCoroutine(StunnedEnemy());
     }
 
     IEnumerator StunnedEnemy()
     {
+        float _savedSpeed = MovementSpeed;
         MovementSpeed = 0;
         float Timer = 5;
         while (Timer > 0)
@@ -43,20 +49,20 @@ public class EnemyScript : MonoBehaviour
             Timer -= Time.deltaTime;
         }
 
-        MovementSpeed -= 5;
+        MovementSpeed = _savedSpeed;
     }
 
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject == Player)
+        if(collision.gameObject == Player & StunnedRoutine == null)
         {
             collision.gameObject.GetComponent<PlayerMovement>().OnPlayerDamaged(false);
         }
     }
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject == Player)
+        if (collision.gameObject == Player & StunnedRoutine == null)
         {
             collision.gameObject.GetComponent<PlayerMovement>().OnPlayerDamaged(false);
         }
