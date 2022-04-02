@@ -196,8 +196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8084397495e653c4ab60ef78fcd8065d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSnappiness: 0
-  cameraMaxSpeed: 0
-  FollowPathStrenght: 0
-  cameraOffset: {x: 0, y: 0, z: 0}
+  cameraSnappiness: 18.1
+  cameraMaxSpeed: 1000
+  FollowPathStrenght: 0.5
+  cameraOffset: {x: -0.168, y: 5.74, z: -7.15}
   shakeCameraPosition: {x: 0, y: 0, z: 0}

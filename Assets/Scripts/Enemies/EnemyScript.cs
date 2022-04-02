@@ -5,23 +5,21 @@ using UnityEngine.AI;
 
 public class EnemyScript : MonoBehaviour
 {
-    [SerializeField] float MovementSpeed;
-    [SerializeField] GameObject Player;
-    Rigidbody RB;
-    private Coroutine StunnedRoutine;
+    [SerializeField] protected float MovementSpeed;
+    [SerializeField] protected GameObject Player;
+    protected Rigidbody RB;
+    protected Coroutine StunnedRoutine;
+    protected bool stunned;
     
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         RB = gameObject.GetComponent<Rigidbody>();
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        RB.velocity = new Vector3(Player.transform.position.x- transform.position.x, 0, Player.transform.position.z - transform.position.z).normalized * MovementSpeed;
-    }
+    
 
     public void Damaged()
     {
@@ -40,6 +38,7 @@ public class EnemyScript : MonoBehaviour
 
     IEnumerator StunnedEnemy(float EffectTime)
     {
+        stunned = true;
         float _savedSpeed = MovementSpeed;
         MovementSpeed = 0;
         float Timer = EffectTime;
@@ -48,19 +47,19 @@ public class EnemyScript : MonoBehaviour
             yield return 0;
             Timer -= Time.deltaTime;
         }
-
+        stunned = false;
         MovementSpeed = _savedSpeed;
     }
 
 
-    private void OnCollisionEnter(Collision collision)
+    protected void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject == Player & StunnedRoutine == null)
         {
             collision.gameObject.GetComponent<PlayerMovement>().OnPlayerDamaged(false);
         }
     }
-    private void OnCollisionStay(Collision collision)
+    protected void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject == Player & StunnedRoutine == null)
         {
