@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class PlayerMovement : MonoBehaviour
 {
+    public static Action OnDie;
     [SerializeField] float movementSpeed;
     [SerializeField] float rotationSpeed;
     [SerializeField] float jumpForce;
-    [SerializeField] bool canJump;
     [SerializeField] Rigidbody rb;
     [SerializeField] SpriteRenderer sr;
+
+    [SerializeField] bool canJump = true;
     float hor;
     float ver;
 
@@ -61,6 +63,11 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector3(movementDirection.x * movementSpeed, rb.velocity.y, movementDirection.z * movementSpeed);
 
+        if(Input.GetKeyDown(KeyCode.Space) && canJump)
+        {
+            canJump = false;
+            rb.AddForce(new Vector3(0, jumpForce), ForceMode.Impulse);
+        }
         //if (movementDirection != Vector3.zero)
         //{
         //    Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
@@ -75,8 +82,9 @@ public class PlayerMovement : MonoBehaviour
             if (isShielded == false)
             {
                 //EL JUGADOR MUERE
-                ///ejecutar animaciones y demás
+                ///ejecutar animaciones y demï¿½s
                 Debug.Log("KILL LA KILL");
+                OnDie?.Invoke(); 
             }
             else
             {
@@ -106,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isInvulnerable = true;
         float Timer = 1;
-        //bucle que se repite, para animaciónes o efectos
+        //bucle que se repite, para animaciï¿½nes o efectos
         while (Timer>0)
         {
             yield return 0;
@@ -132,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isInvulnerable = true;
         float Timer = Tiempo;
-        //bucle que se repite, para animaciónes o efectos
+        //bucle que se repite, para animaciï¿½nes o efectos
         while (Timer > 0)
         {
             yield return 0;
@@ -179,7 +187,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float Timer = Tiempo;
         manaosInverseEffect = -1;
-        //bucle que se repite, para animaciónes o efectos
+        //bucle que se repite, para animaciï¿½nes o efectos
         while (Timer > 0)
         {
             yield return 0;
