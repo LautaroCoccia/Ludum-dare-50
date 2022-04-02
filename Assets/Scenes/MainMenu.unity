@@ -397,15 +397,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 455498681804230269, guid: cd2e83d9cb3a4e241af588ea66fd73b6, type: 3}
       propertyPath: m_text
-      value: TITTLE
+      value: TITLE
       objectReference: {fileID: 0}
     - target: {fileID: 455498681804230271, guid: cd2e83d9cb3a4e241af588ea66fd73b6, type: 3}
       propertyPath: m_Name
-      value: UITittle
+      value: UITitle
       objectReference: {fileID: 0}
     - target: {fileID: 455498681842368551, guid: cd2e83d9cb3a4e241af588ea66fd73b6, type: 3}
       propertyPath: m_Name
-      value: UITittleAreYouSure
+      value: UITitleAreYouSure
       objectReference: {fileID: 0}
     - target: {fileID: 455498681924174709, guid: cd2e83d9cb3a4e241af588ea66fd73b6, type: 3}
       propertyPath: m_Name
@@ -429,7 +429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 455498682107692654, guid: cd2e83d9cb3a4e241af588ea66fd73b6, type: 3}
       propertyPath: m_Name
-      value: UITittleCredits
+      value: UITitleCredits
       objectReference: {fileID: 0}
     - target: {fileID: 455498682189467115, guid: cd2e83d9cb3a4e241af588ea66fd73b6, type: 3}
       propertyPath: m_Name
