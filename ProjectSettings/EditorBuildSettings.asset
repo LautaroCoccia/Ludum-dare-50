@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/La posta/MainMenu.unity
+    guid: 0d52c965cc42bd14e80cef7a31ffcf5f
+  - enabled: 1
+    path: Assets/Scenes/Taro.unity
+    guid: 7e80ab88f43c9fe4f8830ba0bb1c12b3
   m_configObjects: {}
