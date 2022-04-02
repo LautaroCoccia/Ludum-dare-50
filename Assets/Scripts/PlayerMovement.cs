@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isInvulnerable;
     private bool isShielded;
     Coroutine ShakiraRoutine;
+    Coroutine ManaosRoutine;
+    private int manaosInverseEffect;
 
     Vector3 movementDirection;
 
@@ -27,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         sr = GetComponent<SpriteRenderer>();
         mainCamera = Camera.main.gameObject;
+
+        manaosInverseEffect = 1;
     }
 
     // Update is called once per frame
@@ -34,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     {
         hor = Input.GetAxisRaw("Horizontal");
         ver = Input.GetAxisRaw("Vertical");
-        movementDirection = new Vector3(hor, 0, ver);
+        movementDirection = new Vector3(hor * manaosInverseEffect, 0, ver * manaosInverseEffect);
 
         /*      Silenciado temporalmente hasta tener sprites
         if(movementDirection.x <0)
@@ -55,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rb.velocity = new Vector3(hor * movementSpeed, rb.velocity.y, ver * movementSpeed);
+        rb.velocity = new Vector3(movementDirection.x * movementSpeed, rb.velocity.y, movementDirection.z * movementSpeed);
 
         //if (movementDirection != Vector3.zero)
         //{
@@ -143,6 +147,7 @@ public class PlayerMovement : MonoBehaviour
     {
         StartCoroutine(PlayerPattyBuff(Tiempo, multiplicadorVelocidad));
     }
+
     IEnumerator PlayerPattyBuff(float Tiempo, float multiplicadorVelocidad)
     {
         
@@ -155,6 +160,33 @@ public class PlayerMovement : MonoBehaviour
         }
 
         movementSpeed /= multiplicadorVelocidad;
+    }
+
+
+    public void OnManaos(float Tiempo)
+    {
+
+        //si el efecto shakira esta activo, se resetea el timer
+        if (ManaosRoutine != null)
+        {
+            StopCoroutine(ShakiraRoutine);
+
+        }
+        ManaosRoutine = StartCoroutine(ManaosEffect(Tiempo));
+    }
+
+    IEnumerator ManaosEffect(float Tiempo)
+    {
+        float Timer = Tiempo;
+        manaosInverseEffect = -1;
+        //bucle que se repite, para animaciónes o efectos
+        while (Timer > 0)
+        {
+            yield return 0;
+            Timer -= Time.deltaTime;
+        }
+        manaosInverseEffect = 1;
+        ManaosRoutine = null;
     }
 
     #endregion
