@@ -38,24 +38,32 @@ public class carrito : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == Player)
+        if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerMovement>().OnPlayerDamaged(false);
         }
         if (collision.gameObject.tag == "wall")
         {
             Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(collision.gameObject);
         }
     }
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject == Player)
+        if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerMovement>().OnPlayerDamaged(false);
         }
         if (collision.gameObject.tag == "wall")
         {
             Destroy(this.gameObject);
+        }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(collision.gameObject);
         }
     }
 }
