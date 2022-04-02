@@ -18,11 +18,15 @@ public class PlayerMovement : MonoBehaviour
     Coroutine ShakiraRoutine;
 
     Vector3 movementDirection;
+
+    GameObject mainCamera;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         sr = GetComponent<SpriteRenderer>();
+        mainCamera = Camera.main.gameObject;
     }
 
     // Update is called once per frame
@@ -74,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("BLOQUEADO!!");
                 isShielded = false;
+                mainCamera.GetComponent<CameraController>().OnCameraShake(1,new Vector3(1,1,0));
                 StartCoroutine(PlayerInvulnerabilityWindow());
             }
         }
