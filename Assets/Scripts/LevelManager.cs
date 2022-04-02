@@ -16,8 +16,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject PauseMenuUI;
     [SerializeField] private GameObject QuitMenuUI;
     [SerializeField] private GameObject GameOverMenuUI;
-
     private static bool pause = false;
+    private static bool playerDied = false;
+
     private static LevelManager _instanceLevelManager;
     public static LevelManager Get()
     {
@@ -34,8 +35,18 @@ public class LevelManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void OnEnable()
+    {
+        PlayerMovement.OnDie += GameOver;
+    }
+    private void OnDisable()
+    {
+        PlayerMovement.OnDie -= GameOver;
+    }
     private void Start()
     {
+        SetTimeScale(1);
+        playerDied = false;
     }
     private void Update()
     {
@@ -73,11 +84,12 @@ public class LevelManager : MonoBehaviour
     private void GameOver()
     {
         SetTimeScale(0);
-        //GameOverMenuUI.SetActive(true);
+        playerDied = true;
+        GameOverMenuUI.SetActive(true);
     }
     public void SetPause()
     {
-        if (!pause)
+        if (!pause && !playerDied)
         {
             pause = !pause;
             SetTimeScale(0);
