@@ -7,7 +7,8 @@ public class EnemyScript : MonoBehaviour
 {
     public float MovementSpeed;
     public GameObject Player;
-    Rigidbody RB;
+    public Rigidbody RB;
+    public GameObject[] wall;
     
     // Start is called before the first frame update
     void Start()
@@ -61,4 +62,7 @@ public class EnemyScript : MonoBehaviour
             collision.gameObject.GetComponent<PlayerMovement>().OnPlayerDamaged(false);
         }
     }
+
+
+
 }

@@ -41,8 +41,9 @@ public class spawn_manager : MonoBehaviour
             default:
                 break;
         }
-    }
+    } //basicamente la wea esta sirve para bajar el tiempo entre spawns
 
+    //corrutina de spawn continuo
     IEnumerator SpawnEnemies()
     {
         while (IsSpawningEnemies)
