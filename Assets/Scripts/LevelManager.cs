@@ -62,8 +62,8 @@ public class LevelManager : MonoBehaviour
     }
     private void UpdateTime(int minutes, int seconds)
     {
-        //UITime.text = minutes.ToString() + ":" + seconds.ToString();
-        Debug.Log(minutes.ToString() + ":" + seconds.ToString());
+        UITime.text = minutes.ToString() + ":" + seconds.ToString();
+        //Debug.Log(minutes.ToString() + ":" + seconds.ToString());
     }
     
     private void SetTimeScale(int scale)
@@ -77,17 +77,27 @@ public class LevelManager : MonoBehaviour
     }
     public void SetPause()
     {
-        pause = !pause;
-        if (pause)
+        if (!pause)
         {
+            pause = !pause;
             SetTimeScale(0);
-            //PauseMenuUI.SetActive(pause);
+            PauseMenuUI.SetActive(pause);
         }
         else
         {
-            SetTimeScale(1);
+            if(QuitMenuUI.activeSelf)
+            {
+                PauseMenuUI.SetActive(true);
+                QuitMenuUI.SetActive(false);
+            }
+            else if(PauseMenuUI.activeSelf)
+            {
+                pause = !pause;
+                PauseMenuUI.SetActive(false);
+                //QuitMenuUI.SetActive(pause);
+                SetTimeScale(1);
+            }
             //PauseMenuUI.SetActive(pause);
-            //QuitMenuUI.SetActive(pause);
         }
     }
 }

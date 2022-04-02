@@ -214,7 +214,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -297,7 +297,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1202120585
 PrefabInstance:
@@ -356,17 +356,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f95c0fa578db60e4d8a2b2d7e0a97a8d, type: 3}
---- !u!114 &1202120586 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2493233970958241383, guid: f95c0fa578db60e4d8a2b2d7e0a97a8d, type: 3}
-  m_PrefabInstance: {fileID: 1202120585}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afc7dc165a26be94395930313ff4ee70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5950683914658448647 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 455498682005051770, guid: cd2e83d9cb3a4e241af588ea66fd73b6, type: 3}
@@ -386,6 +375,18 @@ PrefabInstance:
     - target: {fileID: 455498681433134508, guid: cd2e83d9cb3a4e241af588ea66fd73b6, type: 3}
       propertyPath: m_Name
       value: UIButtonBack
+      objectReference: {fileID: 0}
+    - target: {fileID: 455498681518000949, guid: cd2e83d9cb3a4e241af588ea66fd73b6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4750357961250969666, guid: f95c0fa578db60e4d8a2b2d7e0a97a8d, type: 3}
+    - target: {fileID: 455498681518000949, guid: cd2e83d9cb3a4e241af588ea66fd73b6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 455498681518000949, guid: cd2e83d9cb3a4e241af588ea66fd73b6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 455498681518000951, guid: cd2e83d9cb3a4e241af588ea66fd73b6, type: 3}
       propertyPath: m_Name
@@ -414,7 +415,15 @@ PrefabInstance:
     - target: {fileID: 455498682005051768, guid: cd2e83d9cb3a4e241af588ea66fd73b6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1202120586}
+      objectReference: {fileID: 4750357961250969666, guid: f95c0fa578db60e4d8a2b2d7e0a97a8d, type: 3}
+    - target: {fileID: 455498682005051768, guid: cd2e83d9cb3a4e241af588ea66fd73b6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 455498682005051768, guid: cd2e83d9cb3a4e241af588ea66fd73b6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 455498682005051770, guid: cd2e83d9cb3a4e241af588ea66fd73b6, type: 3}
       propertyPath: m_Name
       value: UIButtonPlay
@@ -497,7 +506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6681948711185902910, guid: cd2e83d9cb3a4e241af588ea66fd73b6, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6681948711185902910, guid: cd2e83d9cb3a4e241af588ea66fd73b6, type: 3}
       propertyPath: m_AnchorMax.x
