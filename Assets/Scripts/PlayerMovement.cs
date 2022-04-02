@@ -7,9 +7,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float movementSpeed;
     [SerializeField] float rotationSpeed;
     [SerializeField] float jumpForce;
-    [SerializeField] bool canJump;
     [SerializeField] Rigidbody rb;
     [SerializeField] SpriteRenderer sr;
+
+    [SerializeField] bool canJump = true;
     float hor;
     float ver;
 
@@ -28,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
         ver = Input.GetAxis("Vertical");
         movementDirection = new Vector3(hor, 0, ver);
         
-        if(movementDirection.x <0)
+        if(movementDirection.x < 0)
         {
             sr.flipX = true;
         }
@@ -47,10 +48,23 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector3(hor * movementSpeed, rb.velocity.y, ver * movementSpeed);
 
+        if(Input.GetKeyDown(KeyCode.Space) && canJump)
+        {
+            canJump = false;
+            rb.AddForce(new Vector3(0, jumpForce), ForceMode.Impulse);
+        }
         //if (movementDirection != Vector3.zero)
         //{
         //    Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
         //    rb.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
         //}
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.tag == "Ground")
+        {
+            canJump = true;
+        }
     }
 }

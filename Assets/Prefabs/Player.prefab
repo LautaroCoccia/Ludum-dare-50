@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 7.5
-  rotationSpeed: 0
-  jumpForce: 0
+  rotationSpeed: 7.5
+  jumpForce: 10
   canJump: 0
   rb: {fileID: 0}
   sr: {fileID: 0}
