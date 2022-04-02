@@ -104,7 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4371345180282245196}
-  - component: {fileID: 4371345180282245197}
+  - component: {fileID: 5152476839021573845}
   - component: {fileID: 4371345180282245199}
   m_Layer: 0
   m_Name: Guardia Normal
@@ -122,13 +122,13 @@ Transform:
   m_GameObject: {fileID: 4371345180282245194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.55, y: 0.46, z: -2.29}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4371345179794789293}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4371345180282245197
+--- !u!114 &5152476839021573845
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,10 +137,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4371345180282245194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 154b999a8f307cf4bac7b031de5bcb39, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e3b12c7b3073bb4fb33efb71eb63b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 2
+  MovementSpeed: 4
   Player: {fileID: 0}
 --- !u!54 &4371345180282245199
 Rigidbody:
