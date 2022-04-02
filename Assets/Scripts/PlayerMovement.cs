@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
     #region Items Y sus timers
 
     //el jugador recibe el escudo
-    public void OnPlayerBuffSuperPancho()
+    public void OnPlayerBuffPatyDeCancha()
     {
         isShielded = true;
     }
@@ -143,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
         ShakiraRoutine = null;
     }
 
-    public void OnPlayerBuffPatty(float Tiempo, float multiplicadorVelocidad)
+    public void OnPlayerBuffSuperPancho(float Tiempo, float multiplicadorVelocidad)
     {
         StartCoroutine(PlayerPattyBuff(Tiempo, multiplicadorVelocidad));
     }
