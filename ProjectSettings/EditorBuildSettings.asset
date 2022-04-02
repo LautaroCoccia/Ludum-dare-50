@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/La posta/MainMenu.unity
     guid: 0d52c965cc42bd14e80cef7a31ffcf5f
   - enabled: 1
     path: Assets/Scenes/Taro.unity
