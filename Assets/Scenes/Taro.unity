@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 309258735}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -462,7 +462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6569068832748923571, guid: d992d0f427e602e42ad16d4c01dc99e0, type: 3}
       propertyPath: jumpForce
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6569068832748923574, guid: d992d0f427e602e42ad16d4c01dc99e0, type: 3}
       propertyPath: m_Name
