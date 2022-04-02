@@ -49,7 +49,7 @@ public class CameraController : MonoBehaviour
             StopCoroutine(shakingRoutine);
 
         }
-        shakingRoutine = StartCoroutine(Shaker(shakeTime, shakeAmount));
+        shakingRoutine = StartCoroutine(Shaker(shakeTime, shakeAmount * 0.1f));
     }
     IEnumerator Shaker(float shakeTime, Vector3 shakeAmount)
     {

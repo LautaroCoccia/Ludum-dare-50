@@ -113,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
     }
     
     
-    public void OnPlayerBuffShakira()
+    public void OnPlayerBuffShakira(float Tiempo)
     {
         //si el efecto shakira esta activo, se resetea el timer
         if (ShakiraRoutine != null)
@@ -121,13 +121,13 @@ public class PlayerMovement : MonoBehaviour
             StopCoroutine(ShakiraRoutine);
             
         }
-        ShakiraRoutine = StartCoroutine(PlayerShakiraEffect());
+        ShakiraRoutine = StartCoroutine(PlayerShakiraEffect(Tiempo));
     }
 
-    IEnumerator PlayerShakiraEffect()
+    IEnumerator PlayerShakiraEffect(float Tiempo)
     {
         isInvulnerable = true;
-        float Timer = 5;
+        float Timer = Tiempo;
         //bucle que se repite, para animaciónes o efectos
         while (Timer > 0)
         {
@@ -139,21 +139,22 @@ public class PlayerMovement : MonoBehaviour
         ShakiraRoutine = null;
     }
 
-    public void OnPlayerBuffPatty()
+    public void OnPlayerBuffPatty(float Tiempo, float multiplicadorVelocidad)
     {
-        StartCoroutine(PlayerPattyBuff());
+        StartCoroutine(PlayerPattyBuff(Tiempo, multiplicadorVelocidad));
     }
-    IEnumerator PlayerPattyBuff()
+    IEnumerator PlayerPattyBuff(float Tiempo, float multiplicadorVelocidad)
     {
-        movementSpeed += 5;
-        float Timer = 5;
+        
+        movementSpeed *= multiplicadorVelocidad;
+        float Timer = Tiempo;
         while (Timer > 0)
         {
             yield return 0;
             Timer -= Time.deltaTime;
         }
 
-        movementSpeed -= 5;
+        movementSpeed /= multiplicadorVelocidad;
     }
 
     #endregion

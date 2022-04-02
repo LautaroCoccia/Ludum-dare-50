@@ -28,21 +28,21 @@ public class EnemyScript : MonoBehaviour
         //Efectos al destruir a este enemigo
         Destroy(gameObject);
     }
-    public void Stunned()
+    public void Stunned(float EffectTime)
     {
         if(StunnedRoutine!= null)
         {
             StopCoroutine(StunnedRoutine);
         }
         //Efectos al estunear a este enemigo
-        StunnedRoutine = StartCoroutine(StunnedEnemy());
+        StunnedRoutine = StartCoroutine(StunnedEnemy(EffectTime));
     }
 
-    IEnumerator StunnedEnemy()
+    IEnumerator StunnedEnemy(float EffectTime)
     {
         float _savedSpeed = MovementSpeed;
         MovementSpeed = 0;
-        float Timer = 5;
+        float Timer = EffectTime;
         while (Timer > 0)
         {
             yield return 0;
