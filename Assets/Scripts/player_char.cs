@@ -23,5 +23,6 @@ public class player_char : MonoBehaviour
     {
         Vector3 MoveVector = transform.TransformDirection(player_vector) * speed;
         player_body.velocity = new Vector3(MoveVector.x, player_body.velocity.y, MoveVector.z);
+        Debug.Log(player_body.velocity);
     }
 }
