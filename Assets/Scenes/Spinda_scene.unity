@@ -199,13 +199,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 25652175}
-  m_LocalRotation: {x: 0.2507934, y: -0, z: -0, w: 0.96804065}
-  m_LocalPosition: {x: -2.93, y: 14.2, z: -21.9}
+  m_LocalRotation: {x: 0.39470494, y: -0, z: -0, w: 0.9188079}
+  m_LocalPosition: {x: -2.93, y: 25.4, z: -27.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 29.049, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 46.495, y: 0, z: 0}
 --- !u!1 &215012121
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,6 +425,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &520296636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 520296638}
+  - component: {fileID: 520296637}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &520296637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520296636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7efc9d8cd09236b488f2dda5eb889575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pick_up: {fileID: 6034264087245826819, guid: a01cb1c43b5b0b2498912185ea9f565b, type: 3}
+  IsSpawningPickUps: 1
+  cantPickUps: 03000000
+  PickUpcounter: 0
+  WaiTime: 3
+  spawners:
+  - {fileID: 520296638}
+  state: 0
+--- !u!4 &520296638
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520296636}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.7, y: 6.5, z: 1.19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &610929909
 GameObject:
@@ -918,7 +969,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_body: {fileID: 1468009320}
   speed: 10
-  time_alive: 0
 --- !u!65 &1468009322
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1024,7 +1074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0d152c2fab81046ba02ee90f73cb45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemies: {fileID: 8729015357470816946, guid: 9b72e044db572cd428c30de84d4abc41, type: 3}
+  Enemies: {fileID: 4232004450221942350, guid: faeeb648db8cbf3499bbc4a96220eef4, type: 3}
   IsSpawningEnemies: 1
   cantEnemies: 010000000200000003000000
   enemycounter: 0
