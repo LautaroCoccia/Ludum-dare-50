@@ -158,7 +158,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator PlayerPattyBuff(float Tiempo, float multiplicadorVelocidad)
     {
         
-        movementSpeed *= multiplicadorVelocidad;
+        movementSpeed += multiplicadorVelocidad;
         float Timer = Tiempo;
         while (Timer > 0)
         {
@@ -166,7 +166,7 @@ public class PlayerMovement : MonoBehaviour
             Timer -= Time.deltaTime;
         }
 
-        movementSpeed /= multiplicadorVelocidad;
+        movementSpeed -= multiplicadorVelocidad;
     }
 
 

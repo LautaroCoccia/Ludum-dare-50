@@ -7,10 +7,7 @@ public class ItemVuvuzela : ItemParent
     [SerializeField] float effectTime;
     [SerializeField] Vector3 DamageSize;
 
-    private void Awake()
-    {
-        Type = 6;
-    }
+    
 
     private void OnTriggerStay(Collider collider)
     {

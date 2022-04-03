@@ -10,8 +10,6 @@ public class pick_up_manager : MonoBehaviour
     {
         public GameObject agarrable;
         public int percentileChance;
-        [HideInInspector]
-        public ItemParent[] Limit;
     }
     public List<PowerUps> PowerUpList;
     [Serializable]
@@ -94,9 +92,6 @@ public class pick_up_manager : MonoBehaviour
     {
         positions[i].isUsed = false;
         Debug.Log("id" + i + "liberated");
-
-        
-       
 
     }
     

@@ -6,10 +6,7 @@ public class ItemManaosDeUva : ItemParent
 {
     [SerializeField] float effectTime;
 
-    private void Awake()
-    {
-        Type = 0;
-    }
+    
 
     private void OnTriggerStay(Collider collider)
     {

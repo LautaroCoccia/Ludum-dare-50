@@ -7,10 +7,7 @@ public class ItemViajero : ItemParent
     [SerializeField] float effectTime;
     [SerializeField] Vector3 effectForce;
 
-    private void Awake()
-    {
-        Type = 5;
-    }
+    
 
     private void OnTriggerStay(Collider other)
     {

@@ -5,12 +5,7 @@ using UnityEngine;
 public class ItemSuperPancho : ItemParent
 {
 
-    private void Awake()
-    {
-        
-            Type = 2;
-        
-    }
+    
 
     [SerializeField] float effectTime;
     [SerializeField] float multiplicadorVelocidad;

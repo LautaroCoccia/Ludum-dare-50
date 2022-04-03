@@ -6,10 +6,7 @@ public class ItemShakira : ItemParent
 {
     [SerializeField] float effectTime;
 
-    private void Awake()
-    {
-        Type = 1;
-    }
+    
 
     private void OnTriggerStay(Collider collider)
     {

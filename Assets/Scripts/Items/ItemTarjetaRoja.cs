@@ -5,10 +5,7 @@ using UnityEngine;
 public class ItemTarjetaRoja : ItemParent
 {
     [SerializeField] Vector3 DamageSize;
-    private void Awake()
-    {
-        Type = 4;
-    }
+    
 
     private void OnTriggerStay(Collider collider)
     {

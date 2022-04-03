@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class ItemPatyDeCancha : ItemParent
 {
-    private void Awake()
-    {
-        Type = 3;
-    }
+    
     private void OnTriggerStay(Collider collider)
     {
         
