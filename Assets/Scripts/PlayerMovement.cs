@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class PlayerMovement : MonoBehaviour
 {
+    public static Action OnDie;
     [SerializeField] float movementSpeed;
     [SerializeField] float rotationSpeed;
     [SerializeField] float jumpForce;
@@ -83,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
                 //EL JUGADOR MUERE
                 ///ejecutar animaciones y dem�s
                 Debug.Log("KILL LA KILL");
+                OnDie?.Invoke(); 
             }
             else
             {

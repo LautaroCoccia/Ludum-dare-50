@@ -17,7 +17,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject QuitMenuUI;
     [SerializeField] private GameObject GameOverMenuUI;
 
+    Stack<GameObject> UIStack;
     private static bool pause = false;
+    private static bool playerDied = false;
+
     private static LevelManager _instanceLevelManager;
     public static LevelManager Get()
     {
@@ -34,8 +37,18 @@ public class LevelManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void OnEnable()
+    {
+        PlayerMovement.OnDie += GameOver;
+    }
+    private void OnDisable()
+    {
+        PlayerMovement.OnDie -= GameOver;
+    }
     private void Start()
     {
+        SetTimeScale(1);
+        playerDied = false;
     }
     private void Update()
     {
@@ -43,7 +56,7 @@ public class LevelManager : MonoBehaviour
         {
             SetPause();
         }
-        if(!pause)
+        if(!pause && !playerDied)
         {
             if (miliSeconds < 1)
                 miliSeconds += Time.deltaTime;
@@ -73,31 +86,32 @@ public class LevelManager : MonoBehaviour
     private void GameOver()
     {
         SetTimeScale(0);
-        //GameOverMenuUI.SetActive(true);
+        playerDied = true;
+        GameOverMenuUI.SetActive(true);
     }
     public void SetPause()
     {
-        if (!pause)
+        if (!pause && !playerDied)
         {
-            pause = !pause;
             SetTimeScale(0);
-            PauseMenuUI.SetActive(pause);
+            pause = true;
+            PauseMenuUI.SetActive(true);
+        }
+        else if (QuitMenuUI.activeSelf && !playerDied)
+        {
+            PauseMenuUI.SetActive(true);
+            QuitMenuUI.SetActive(false);
+        }
+        else if (PauseMenuUI.activeSelf)
+        {
+            SetTimeScale(1);
+            PauseMenuUI.SetActive(false);
+            pause = false;
         }
         else
         {
-            if(QuitMenuUI.activeSelf)
-            {
-                PauseMenuUI.SetActive(true);
-                QuitMenuUI.SetActive(false);
-            }
-            else if(PauseMenuUI.activeSelf)
-            {
-                pause = !pause;
-                PauseMenuUI.SetActive(false);
-                //QuitMenuUI.SetActive(pause);
-                SetTimeScale(1);
-            }
-            //PauseMenuUI.SetActive(pause);
+            GameOverMenuUI.SetActive(true);
+            QuitMenuUI.SetActive(false);
         }
     }
 }
