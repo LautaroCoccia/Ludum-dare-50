@@ -10,18 +10,20 @@ public class ItemVuvuzela : ItemParent
     private void OnTriggerStay(Collider collider)
     {
 
-        
+
         if (collider.gameObject.CompareTag("Player"))
         {
-            foreach(RaycastHit raycastHit in Physics.BoxCastAll(gameObject.transform.position, DamageSize, transform.forward,transform.rotation) )
+
+            foreach (RaycastHit raycastHit in Physics.BoxCastAll(gameObject.transform.position, DamageSize, transform.forward, transform.rotation))
             {
                 if (raycastHit.transform.CompareTag("Enemy"))
                 {
                     raycastHit.transform.GetComponent<EnemyScript>().Stunned(effectTime);
                 }
-                Camera.main.GetComponent<CameraController>().OnCameraShake(1,new Vector3(2,0,0));
+
 
             }
+            Camera.main.GetComponent<CameraController>().OnCameraShake(1, new Vector3(2, 0, 0));
             if (manager != null)
             {
                 manager.OnDeleteObject(SpawnedOn);

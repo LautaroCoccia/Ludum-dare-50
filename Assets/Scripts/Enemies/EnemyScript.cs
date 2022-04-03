@@ -38,8 +38,10 @@ public class EnemyScript : MonoBehaviour
 
     IEnumerator StunnedEnemy(float EffectTime)
     {
+        Debug.Log("Stuned");
         stunned = true;
         float _savedSpeed = MovementSpeed;
+        Debug.Log("Stuned: " + _savedSpeed);
         MovementSpeed = 0;
         float Timer = EffectTime;
         while (Timer > 0)
@@ -49,6 +51,7 @@ public class EnemyScript : MonoBehaviour
         }
         stunned = false;
         MovementSpeed = _savedSpeed;
+        Debug.Log("UnStuned: " + _savedSpeed);
     }
 
 
