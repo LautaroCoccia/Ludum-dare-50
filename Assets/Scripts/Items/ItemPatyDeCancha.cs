@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemPatyDeCancha : MonoBehaviour
+public class ItemPatyDeCancha : ItemParent
 {
     
     private void OnTriggerStay(Collider collider)
     {
-        Debug.Log("Colided: " + collider.gameObject.tag);
+        
         if (collider.gameObject.CompareTag("Player"))
         {
             collider.gameObject.GetComponent<PlayerMovement>().OnPlayerBuffPatyDeCancha();
+
+            manager.OnDeleteObject(SpawnedOn);
             Destroy(gameObject);
+            
         }
     }
 }

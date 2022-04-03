@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemVuvuzela : MonoBehaviour
+public class ItemVuvuzela : ItemParent
 {
     [SerializeField] float effectTime;
     [SerializeField] Vector3 DamageSize;
@@ -10,7 +10,7 @@ public class ItemVuvuzela : MonoBehaviour
     private void OnTriggerStay(Collider collider)
     {
 
-        Debug.Log("Colided: " + collider.gameObject.name);
+        
         if (collider.gameObject.CompareTag("Player"))
         {
             foreach(RaycastHit raycastHit in Physics.BoxCastAll(gameObject.transform.position, DamageSize, transform.forward,transform.rotation) )
@@ -20,6 +20,7 @@ public class ItemVuvuzela : MonoBehaviour
                     raycastHit.transform.GetComponent<EnemyScript>().Stunned(effectTime);
                 }
             }
+            manager.OnDeleteObject(SpawnedOn);
             Destroy(gameObject);
         }
     }

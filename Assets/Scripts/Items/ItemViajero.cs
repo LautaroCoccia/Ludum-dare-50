@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemViajero : MonoBehaviour
+public class ItemViajero : ItemParent
 {
     [SerializeField] float effectTime;
     [SerializeField] Vector3 effectForce;
@@ -12,6 +12,8 @@ public class ItemViajero : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Camera.main.GetComponent<CameraController>().OnCameraShake(effectTime, effectForce);
+
+            manager.OnDeleteObject(SpawnedOn);
             Destroy(gameObject);
         }
     }

@@ -83,12 +83,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 //EL JUGADOR MUERE
                 ///ejecutar animaciones y dem�s
-                Debug.Log("KILL LA KILL");
+                
                 OnDie?.Invoke(); 
             }
             else
             {
-                Debug.Log("BLOQUEADO!!");
+               
                 isShielded = false;
                 mainCamera.GetComponent<CameraController>().OnCameraShake(1,new Vector3(1,1,0));
                 StartCoroutine(PlayerInvulnerabilityWindow());
@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            Debug.Log("IIINMOOORTAAAALLL!!!");
+            
         }
         
     }
