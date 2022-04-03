@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class carrito_horizontal : MonoBehaviour
+public class carrito_definitivo : MonoBehaviour
 {
     private Vector3 Carrito_vector;
-    private Vector3 vector_norte = new Vector3(1, 0, 0);
-    private Vector3 vector_sur = new Vector3(-1, 0, 0);
+    private Vector3 vector_norte = new Vector3(0, 0, 1);
+    private Vector3 vector_sur = new Vector3(0, 0, -1);
     public GameObject Player;
     public int speed = 8;
     void Start()
     {
-        if (transform.position.x <= -3)
+        if (transform.position.z <= -3)
         {
             Carrito_vector = vector_norte;
         }
-
-        else if (transform.position.x >= 3)
+        
+        else if (transform.position.z >= 3)
         {
             Carrito_vector = vector_sur;
         }
@@ -24,14 +24,14 @@ public class carrito_horizontal : MonoBehaviour
     }
     void Update()
     {
-        if (transform.position.x >= -3)
+        if (transform.position.z >= -3)
         {
             transform.Translate(Carrito_vector * speed * Time.deltaTime);
         }
-        else if (transform.position.x <= 3)
+        else if (transform.position.z <= 3)
         {
             transform.Translate(Carrito_vector * speed * Time.deltaTime);
-
+            
         }
     }
     private void OnTriggerEnter(Collider collider)
@@ -50,4 +50,5 @@ public class carrito_horizontal : MonoBehaviour
             Destroy(collider.gameObject);
         }
     }
+
 }

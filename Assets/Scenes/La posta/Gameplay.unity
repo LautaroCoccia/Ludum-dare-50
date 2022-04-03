@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -495,6 +495,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7876ca7dcf440da48975892bbc814c99, type: 3}
+--- !u!114 &1330458996 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7732613557572748549, guid: 7876ca7dcf440da48975892bbc814c99, type: 3}
+  m_PrefabInstance: {fileID: 1298430751}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b5ebfe57787bea4284bc8a1ee9fbdc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1465060291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -669,9 +680,41 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1197609352107353350, guid: 4ef1204e1364625468167ec2a6b90e1c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1197609352107353350, guid: 4ef1204e1364625468167ec2a6b90e1c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1197609352107353350, guid: 4ef1204e1364625468167ec2a6b90e1c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1330458996}
+    - target: {fileID: 1197609352107353350, guid: 4ef1204e1364625468167ec2a6b90e1c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPause
+      objectReference: {fileID: 0}
+    - target: {fileID: 1197609352107353350, guid: 4ef1204e1364625468167ec2a6b90e1c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1197609352293613325, guid: 4ef1204e1364625468167ec2a6b90e1c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1330458996}
+    - target: {fileID: 1197609352293613325, guid: 4ef1204e1364625468167ec2a6b90e1c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPause
+      objectReference: {fileID: 0}
     - target: {fileID: 1699864093896095287, guid: 4ef1204e1364625468167ec2a6b90e1c, type: 3}
       propertyPath: m_text
       value: GAME OVER
+      objectReference: {fileID: 0}
+    - target: {fileID: 3659828616469755465, guid: 4ef1204e1364625468167ec2a6b90e1c, type: 3}
+      propertyPath: m_text
+      value: 0:0
       objectReference: {fileID: 0}
     - target: {fileID: 4069032040204181905, guid: 4ef1204e1364625468167ec2a6b90e1c, type: 3}
       propertyPath: m_Name

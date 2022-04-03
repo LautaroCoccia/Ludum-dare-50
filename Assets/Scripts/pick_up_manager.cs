@@ -1,51 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class pick_up_manager : MonoBehaviour
 {
-    public GameObject pick_up;
-    public bool IsSpawningPickUps;
-    public int[] cantPickUps;
-    public int PickUpcounter;
-    public int WaiTime = 3;
-    public Transform[] spawners;
-
+    public List<GameObject> agarrables;
+    [Serializable]
+    public class Position
+    {
+        public Transform pos;
+        public bool isUsed;
+        public int index;
+    }
+    public List<Position> positions;
     void Start()
     {
-        StartCoroutine(SpawnEnemies());
+        for (int i = 0; i < positions.Count; i++)
+            positions[i].index = i;
     }
 
-    public enum ActualEnemyState
+    float timer = 0f;
+    private void Update()
     {
-        Regular
-    }
-    public ActualEnemyState state;
-
-    public void WaitTime(ActualEnemyState state)
-    {
-        switch (state)
+        timer += Time.deltaTime;
+        if (timer >= 3)
         {
-            case ActualEnemyState.Regular:
-                WaiTime = 5;
-                break;
-            
+            SpawnStuff();
+            timer = 0;
         }
     }
 
-    IEnumerator SpawnEnemies()
+    public void SpawnStuff()
     {
-        while (IsSpawningPickUps)
+        List<Position> PositionsAux = new List<Position>(positions);
+        for (int i = 0; i < PositionsAux.Count; i++)
         {
-            for (int i = 0; i < cantPickUps[(int)state]; i++)
+            if (PositionsAux[i].isUsed)
             {
-                Instantiate(pick_up, spawners[Random.Range(0, spawners.Length)].position, Quaternion.identity);
-                
-                
-                yield return new WaitForSeconds(WaiTime);
+                PositionsAux.RemoveAt(i);
+                i--;
             }
         }
-    }   
+        
+        if (PositionsAux.Count > 0)
+        {
+            int ind = UnityEngine.Random.Range(0, PositionsAux.Count);
+            Instantiate(agarrables[UnityEngine.Random.Range(0, agarrables.Count)], PositionsAux[ind].pos.position , Quaternion.identity);
+            ind = PositionsAux[ind].index;
+            positions[ind].isUsed = true;
+        }
 
+        
+
+    }
 
 }
