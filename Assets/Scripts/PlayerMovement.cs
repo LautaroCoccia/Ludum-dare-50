@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     {
         hor = Input.GetAxisRaw("Horizontal");
         ver = Input.GetAxisRaw("Vertical");
-        movementDirection = new Vector3(hor * manaosInverseEffect, 0, ver * manaosInverseEffect);
+        movementDirection = new Vector3(hor * manaosInverseEffect, 0, ver * manaosInverseEffect).normalized;
 
         /*      Silenciado temporalmente hasta tener sprites
         if(movementDirection.x <0)

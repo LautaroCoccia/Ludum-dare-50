@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ItemSuperPancho : ItemParent
 {
+
+    
+
     [SerializeField] float effectTime;
     [SerializeField] float multiplicadorVelocidad;
     private void OnTriggerStay(Collider collider)

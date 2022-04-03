@@ -87,5 +87,9 @@ public class pick_up_manager : MonoBehaviour
         positions[i].isUsed = false;
         Debug.Log("id" + i + "liberated");
     }
-
+    public void OnDeleteObject(int i)
+    {
+        positions[i].isUsed = false;
+        Debug.Log("id" + i + "liberated");
+    }
 }
