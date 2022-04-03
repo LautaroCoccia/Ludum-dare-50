@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemManaosDeUva : MonoBehaviour
 {
     [SerializeField] float effectTime;
+    [SerializeField] AudioSource nanaos;
 
     private void OnTriggerStay(Collider collider)
     {
@@ -12,8 +13,11 @@ public class ItemManaosDeUva : MonoBehaviour
         Debug.Log("Colided: " + collider.gameObject.name);
         if (collider.gameObject.CompareTag("Player"))
         {
+            nanaos.Play();
             collider.gameObject.GetComponent<PlayerMovement>().OnManaos(effectTime);
-            Destroy(gameObject);
+            GetComponent<CapsuleCollider>().enabled = false;
+            Destroy(gameObject, nanaos.clip.length);
+            
         }
     }
 }

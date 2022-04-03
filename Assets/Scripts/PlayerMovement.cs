@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce;
     [SerializeField] Rigidbody rb;
     [SerializeField] SpriteRenderer sr;
+    [SerializeField] AudioSource RunRun;
 
     [SerializeField] bool canJump = true;
     float hor;
@@ -100,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
+
 
     #region Items Y sus timers
 
