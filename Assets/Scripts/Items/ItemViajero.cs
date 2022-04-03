@@ -7,6 +7,11 @@ public class ItemViajero : ItemParent
     [SerializeField] float effectTime;
     [SerializeField] Vector3 effectForce;
 
+    private void Awake()
+    {
+        Type = 5;
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -15,7 +20,7 @@ public class ItemViajero : ItemParent
 
             if (manager != null)
             {
-                manager.OnDeleteObject(SpawnedOn);
+                manager.OnDeleteObject(this, SpawnedOn);
 
             }
             Destroy(gameObject);

@@ -6,6 +6,11 @@ public class ItemManaosDeUva : ItemParent
 {
     [SerializeField] float effectTime;
 
+    private void Awake()
+    {
+        Type = 0;
+    }
+
     private void OnTriggerStay(Collider collider)
     {
 
@@ -15,7 +20,7 @@ public class ItemManaosDeUva : ItemParent
             collider.gameObject.GetComponent<PlayerMovement>().OnManaos(effectTime);
             if (manager != null)
             {
-                manager.OnDeleteObject(SpawnedOn);
+                manager.OnDeleteObject(this,SpawnedOn);
 
             }
             Destroy(gameObject);

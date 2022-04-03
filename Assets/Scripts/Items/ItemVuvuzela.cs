@@ -7,6 +7,11 @@ public class ItemVuvuzela : ItemParent
     [SerializeField] float effectTime;
     [SerializeField] Vector3 DamageSize;
 
+    private void Awake()
+    {
+        Type = 6;
+    }
+
     private void OnTriggerStay(Collider collider)
     {
 
@@ -26,7 +31,7 @@ public class ItemVuvuzela : ItemParent
             Camera.main.GetComponent<CameraController>().OnCameraShake(1, new Vector3(2, 0, 0));
             if (manager != null)
             {
-                manager.OnDeleteObject(SpawnedOn);
+                manager.OnDeleteObject(this, SpawnedOn);
 
             }
             Destroy(gameObject);

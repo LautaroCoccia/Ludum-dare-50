@@ -5,6 +5,12 @@ using UnityEngine;
 public class ItemShakira : ItemParent
 {
     [SerializeField] float effectTime;
+
+    private void Awake()
+    {
+        Type = 1;
+    }
+
     private void OnTriggerStay(Collider collider)
     {
         
@@ -14,7 +20,7 @@ public class ItemShakira : ItemParent
 
             if (manager != null)
             {
-                manager.OnDeleteObject(SpawnedOn);
+                manager.OnDeleteObject(this, SpawnedOn);
 
             }
             Destroy(gameObject);

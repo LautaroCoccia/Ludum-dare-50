@@ -5,7 +5,12 @@ using UnityEngine;
 public class ItemSuperPancho : ItemParent
 {
 
-    
+    private void Awake()
+    {
+        
+            Type = 2;
+        
+    }
 
     [SerializeField] float effectTime;
     [SerializeField] float multiplicadorVelocidad;
@@ -18,7 +23,7 @@ public class ItemSuperPancho : ItemParent
 
             if (manager != null)
             {
-                manager.OnDeleteObject(SpawnedOn);
+                manager.OnDeleteObject(this, SpawnedOn);
 
             }
             Destroy(gameObject);

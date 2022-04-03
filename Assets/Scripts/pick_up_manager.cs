@@ -10,6 +10,8 @@ public class pick_up_manager : MonoBehaviour
     {
         public GameObject agarrable;
         public int percentileChance;
+        [HideInInspector]
+        public ItemParent[] Limit;
     }
     public List<PowerUps> PowerUpList;
     [Serializable]
@@ -57,17 +59,23 @@ public class pick_up_manager : MonoBehaviour
         
         if (PositionsAux.Count > 0)
         {
-            int Seed = UnityEngine.Random.Range(0, 100);
-            Debug.Log("Chance: " + Seed);
-            int Chance = PowerUpList[0].percentileChance;
-            int indexAux = 0;
-            while (Seed > Chance)
-            {
-                indexAux += 1;
-                Chance += PowerUpList[indexAux].percentileChance;
-                Debug.Log("debajo del limite: " + Chance);
-            }
+            int Seed;
+            int Chance;
+            int indexAux;
 
+            
+                Seed = UnityEngine.Random.Range(0, 100);
+                Chance = PowerUpList[0].percentileChance;
+                indexAux = 0;
+                while (Seed > Chance)
+                {
+                    indexAux += 1;
+                    Chance += PowerUpList[indexAux].percentileChance;
+                    Debug.Log("debajo del limite: " + Chance);
+                }
+                
+            
+            
             int ind = UnityEngine.Random.Range(0, PositionsAux.Count);
             GameObject Prefab = Instantiate(PowerUpList[indexAux].agarrable, PositionsAux[ind].pos.position , Quaternion.identity);
 
@@ -82,14 +90,14 @@ public class pick_up_manager : MonoBehaviour
 
     }
 
-    public void OnDeleteObject(int i)
+    public void OnDeleteObject(ItemParent me,int i)
     {
         positions[i].isUsed = false;
         Debug.Log("id" + i + "liberated");
+
+        
+       
+
     }
-    public void OnDeleteObject(int i)
-    {
-        positions[i].isUsed = false;
-        Debug.Log("id" + i + "liberated");
-    }
+    
 }

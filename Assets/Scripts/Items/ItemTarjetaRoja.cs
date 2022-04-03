@@ -5,6 +5,11 @@ using UnityEngine;
 public class ItemTarjetaRoja : ItemParent
 {
     [SerializeField] Vector3 DamageSize;
+    private void Awake()
+    {
+        Type = 4;
+    }
+
     private void OnTriggerStay(Collider collider)
     {
 
@@ -20,7 +25,7 @@ public class ItemTarjetaRoja : ItemParent
             }
             if (manager != null)
             {
-                manager.OnDeleteObject(SpawnedOn);
+                manager.OnDeleteObject(this, SpawnedOn);
 
             }
             Destroy(gameObject);

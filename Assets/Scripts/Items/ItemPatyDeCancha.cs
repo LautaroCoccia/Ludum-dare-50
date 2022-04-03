@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class ItemPatyDeCancha : ItemParent
 {
-    
+    private void Awake()
+    {
+        Type = 3;
+    }
     private void OnTriggerStay(Collider collider)
     {
         
@@ -14,7 +17,7 @@ public class ItemPatyDeCancha : ItemParent
 
             if (manager != null)
             {
-                manager.OnDeleteObject(SpawnedOn);
+                manager.OnDeleteObject(this, SpawnedOn);
 
             }
             Destroy(gameObject);
