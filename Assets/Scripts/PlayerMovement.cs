@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] SpriteRenderer sr;
     [SerializeField] AudioSource RunRun;
+    [SerializeField] bool isMoving;
 
     [SerializeField] bool canJump = true;
     float hor;
@@ -43,6 +44,29 @@ public class PlayerMovement : MonoBehaviour
         ver = Input.GetAxisRaw("Vertical");
         movementDirection = new Vector3(hor * manaosInverseEffect, 0, ver * manaosInverseEffect);
 
+        if (rb.velocity.x != 0  || rb.velocity.z != 0)
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
+
+        if (isMoving == true)
+        {
+            if (!RunRun.isPlaying)
+            {
+                RunRun.Play();
+            }
+        }
+        else
+        {
+            RunRun.Stop();
+        }
+
+        
+
         /*      Silenciado temporalmente hasta tener sprites
         if(movementDirection.x <0)
         {
@@ -53,16 +77,18 @@ public class PlayerMovement : MonoBehaviour
             sr.flipX = false;
         }
         */
-        //movementDirection.Normalize();
-        //if (movementDirection != Vector3.zero)
-        //{
-        //    Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-        //    transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
-        //}
+            //movementDirection.Normalize();
+            //if (movementDirection != Vector3.zero)
+            //{
+            //    Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+            //    transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+            //}
     }
     private void FixedUpdate()
     {
         rb.velocity = new Vector3(movementDirection.x * movementSpeed, rb.velocity.y, movementDirection.z * movementSpeed);
+
+        
 
         if(Input.GetKeyDown(KeyCode.Space) && canJump)
         {
@@ -102,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-
+    
     #region Items Y sus timers
 
     //el jugador recibe el escudo
