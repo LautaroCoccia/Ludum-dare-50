@@ -13,7 +13,11 @@ public class ItemSuperPancho : ItemParent
         {
             collider.gameObject.GetComponent<PlayerMovement>().OnPlayerBuffSuperPancho(effectTime, multiplicadorVelocidad);
 
-            manager.OnDeleteObject(SpawnedOn);
+            if (manager != null)
+            {
+                manager.OnDeleteObject(SpawnedOn);
+
+            }
             Destroy(gameObject);
 
         }

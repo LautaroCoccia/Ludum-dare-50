@@ -13,7 +13,11 @@ public class ItemViajero : ItemParent
         {
             Camera.main.GetComponent<CameraController>().OnCameraShake(effectTime, effectForce);
 
-            manager.OnDeleteObject(SpawnedOn);
+            if (manager != null)
+            {
+                manager.OnDeleteObject(SpawnedOn);
+
+            }
             Destroy(gameObject);
         }
     }

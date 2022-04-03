@@ -19,8 +19,14 @@ public class ItemVuvuzela : ItemParent
                 {
                     raycastHit.transform.GetComponent<EnemyScript>().Stunned(effectTime);
                 }
+                Camera.main.GetComponent<CameraController>().OnCameraShake(1,new Vector3(2,0,0));
+
             }
-            manager.OnDeleteObject(SpawnedOn);
+            if (manager != null)
+            {
+                manager.OnDeleteObject(SpawnedOn);
+
+            }
             Destroy(gameObject);
         }
     }

@@ -18,8 +18,11 @@ public class ItemTarjetaRoja : ItemParent
                     raycastHit.transform.GetComponent<EnemyScript>().Damaged();
                 }
             }
+            if (manager != null)
+            {
+                manager.OnDeleteObject(SpawnedOn);
 
-            manager.OnDeleteObject(SpawnedOn);
+            }
             Destroy(gameObject);
         }
     }

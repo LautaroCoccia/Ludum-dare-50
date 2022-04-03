@@ -12,7 +12,11 @@ public class ItemPatyDeCancha : ItemParent
         {
             collider.gameObject.GetComponent<PlayerMovement>().OnPlayerBuffPatyDeCancha();
 
-            manager.OnDeleteObject(SpawnedOn);
+            if (manager != null)
+            {
+                manager.OnDeleteObject(SpawnedOn);
+
+            }
             Destroy(gameObject);
             
         }

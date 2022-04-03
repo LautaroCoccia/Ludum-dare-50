@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemParent : MonoBehaviour
 {
-   
+    
     [HideInInspector]
     public int SpawnedOn;
     [HideInInspector]

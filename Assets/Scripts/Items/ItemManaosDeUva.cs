@@ -13,8 +13,11 @@ public class ItemManaosDeUva : ItemParent
         if (collider.gameObject.CompareTag("Player"))
         {
             collider.gameObject.GetComponent<PlayerMovement>().OnManaos(effectTime);
+            if (manager != null)
+            {
+                manager.OnDeleteObject(SpawnedOn);
 
-            manager.OnDeleteObject(SpawnedOn);
+            }
             Destroy(gameObject);
         }
     }

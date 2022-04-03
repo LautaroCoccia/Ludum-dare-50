@@ -12,7 +12,11 @@ public class ItemShakira : ItemParent
         {
             collider.gameObject.GetComponent<PlayerMovement>().OnPlayerBuffShakira(effectTime);
 
-            manager.OnDeleteObject(SpawnedOn);
+            if (manager != null)
+            {
+                manager.OnDeleteObject(SpawnedOn);
+
+            }
             Destroy(gameObject);
         }
     }
