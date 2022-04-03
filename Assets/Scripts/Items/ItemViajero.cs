@@ -6,12 +6,17 @@ public class ItemViajero : MonoBehaviour
 {
     [SerializeField] float effectTime;
     [SerializeField] Vector3 effectForce;
-
+    //Vector3 startPosition;
+    Camera mainCamera;
+    private void Start()
+    {
+        mainCamera = Camera.main;
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Camera.main.GetComponent<CameraController>().OnCameraShake(effectTime, effectForce);
+            mainCamera.GetComponent<CameraController>().OnCameraShake(effectTime, effectForce);
             Destroy(gameObject);
         }
     }

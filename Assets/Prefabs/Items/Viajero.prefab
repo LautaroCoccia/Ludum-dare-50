@@ -58,5 +58,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655b118188f6264408de314e49b07178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectTime: 0
-  effectForce: {x: 0, y: 0, z: 0}
+  effectTime: 5
+  effectForce: {x: 10, y: 10, z: 10}
