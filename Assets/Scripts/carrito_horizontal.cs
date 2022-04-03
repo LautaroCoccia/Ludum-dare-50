@@ -33,10 +33,6 @@ public class carrito_horizontal : MonoBehaviour
             transform.Translate(Carrito_vector * speed * Time.deltaTime);
 
         }
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Destroy(collision.gameObject);
-        }
     }
     private void OnTriggerEnter(Collider collider)
     {
