@@ -16,7 +16,7 @@ public class pick_up_manager : MonoBehaviour
     public class Position
     {
         public Transform pos;
-        
+        [HideInInspector]
         public bool isUsed;
         [HideInInspector]
         public int index;

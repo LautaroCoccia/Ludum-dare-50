@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2242071314914497671}
   - component: {fileID: 8378843198740373165}
   m_Layer: 0
-  m_Name: Super Pancho
+  m_Name: Paty de cancha
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -59,6 +59,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772fdf68f654ce74e8598df772f85ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpawnedOn: 0
+  manager: {fileID: 0}
 --- !u!1 &7994990128242081081
 GameObject:
   m_ObjectHideFlags: 0
