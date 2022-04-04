@@ -100,12 +100,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 8.5
   rotationSpeed: 7.5
+<<<<<<< HEAD
   jumpForce: 5
   rb: {fileID: 6569068832748923570}
   sr: {fileID: 0}
   RunRun: {fileID: 1935610024}
   isMoving: 0
   canJump: 0
+=======
+  jumpForce: 7
+  rb: {fileID: 0}
+  sr: {fileID: 0}
+  canJump: 1
+>>>>>>> Taro
 --- !u!54 &6569068832748923570
 Rigidbody:
   m_ObjectHideFlags: 0
