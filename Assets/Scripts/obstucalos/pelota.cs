@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class pelota : MonoBehaviour
 {
+    public AudioSource noise;
     void Start()
     {
         StartCoroutine(TimeAlive());
@@ -14,7 +15,9 @@ public class pelota : MonoBehaviour
         Debug.Log("Colided: " + collider.gameObject.name);
         if (collider.gameObject.CompareTag("Player"))
         {
-            collider.gameObject.GetComponent<PlayerMovement>().pelotazo();
+            GetComponent<BoxCollider>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = false;
+            collider.gameObject.GetComponent<PlayerMovement>().bochazo();
         }
     }
 

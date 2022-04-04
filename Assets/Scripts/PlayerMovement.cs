@@ -249,6 +249,11 @@ public class PlayerMovement : MonoBehaviour
         Icons[0].SetActive(false);
     }
 
+    public void bochazo()
+    {
+        StartCoroutine(pelotazo());
+    }
+
     public IEnumerator pelotazo()
     {
         movementSpeed = 0;
