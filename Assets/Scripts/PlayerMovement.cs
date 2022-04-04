@@ -233,6 +233,11 @@ public class PlayerMovement : MonoBehaviour
         ManaosRoutine = null;
     }
 
+    public void bochazo()
+    {
+        StartCoroutine(pelotazo());
+    }
+
     public IEnumerator pelotazo()
     {
         movementSpeed = 0;
