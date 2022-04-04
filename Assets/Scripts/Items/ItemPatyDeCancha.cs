@@ -17,6 +17,7 @@ public class ItemPatyDeCancha : ItemParent
             collider.gameObject.GetComponent<PlayerMovement>().OnPlayerBuffPatyDeCancha();
             noise.Play();
             GetComponent<CapsuleCollider>().enabled = false;
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
             if (manager != null)
             {
                 manager.OnDeleteObject(this, SpawnedOn);

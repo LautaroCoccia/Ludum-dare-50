@@ -16,6 +16,7 @@ public class ItemViajero : ItemParent
         {
             Camera.main.GetComponent<CameraController>().OnCameraShake(effectTime, effectForce);
             GetComponent<CapsuleCollider>().enabled = false;
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
             noise.Play();
             if (manager != null)
             {

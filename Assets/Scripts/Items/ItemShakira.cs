@@ -17,6 +17,7 @@ public class ItemShakira : ItemParent
             collider.gameObject.GetComponent<PlayerMovement>().OnPlayerBuffShakira(effectTime);
             noise.Play();
             GetComponent<CapsuleCollider>().enabled = false;
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
             if (manager != null)
             {
                 manager.OnDeleteObject(this, SpawnedOn);

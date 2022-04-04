@@ -18,6 +18,7 @@ public class ItemVuvuzela : ItemParent
         {
             noise.Play();
             GetComponent<CapsuleCollider>().enabled = false;
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
             foreach (RaycastHit raycastHit in Physics.BoxCastAll(gameObject.transform.position, DamageSize, transform.forward, transform.rotation))
             {
                 if (raycastHit.transform.CompareTag("Enemy"))

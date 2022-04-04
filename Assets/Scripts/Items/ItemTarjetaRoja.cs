@@ -18,6 +18,7 @@ public class ItemTarjetaRoja : ItemParent
         if (collider.gameObject.CompareTag("Player"))
         {
             GetComponent<CapsuleCollider>().enabled = false;
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
             noise.Play();
             foreach (RaycastHit raycastHit in Physics.BoxCastAll(gameObject.transform.position, DamageSize, transform.forward,transform.rotation) )
             {

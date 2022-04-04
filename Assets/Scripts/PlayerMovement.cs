@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     Coroutine ShakiraRoutine;
     Coroutine ManaosRoutine;
     private int manaosInverseEffect;
+    bool lost;
 
     Vector3 movementDirection;
 
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         mainCamera = Camera.main.gameObject;
 
+        lost = false;
         manaosInverseEffect = 1;
     }
 
@@ -53,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
             isMoving = false;
         }
 
-        if (isMoving == true)
+        if (isMoving == true && lost == false)
         {
             if (!RunRun.isPlaying)
             {
@@ -110,7 +112,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 //EL JUGADOR MUERE
                 ///ejecutar animaciones y dem�s
-                
+                lost = true;
+                RunRun.Stop();
+                Camera.main.GetComponent<AudioSource>().Stop();
                 OnDie?.Invoke(); 
             }
             else
