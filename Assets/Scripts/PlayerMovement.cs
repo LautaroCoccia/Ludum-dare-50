@@ -114,7 +114,12 @@ public class PlayerMovement : MonoBehaviour
                 ///ejecutar animaciones y dem�s
                 lost = true;
                 RunRun.Stop();
-                Camera.main.GetComponent<AudioSource>().Stop();
+
+                AudioSource[] cameraSound = mainCamera.GetComponents<AudioSource>();
+                Debug.Log(cameraSound.Length);
+                cameraSound[0].Stop();
+                cameraSound[1].Stop();
+                cameraSound[2].Play();
                 OnDie?.Invoke(); 
             }
             else
