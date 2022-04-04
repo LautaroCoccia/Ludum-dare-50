@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -365,6 +365,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc7dc165a26be94395930313ff4ee70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &935338565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6569068832748923574, guid: d992d0f427e602e42ad16d4c01dc99e0, type: 3}
+  m_PrefabInstance: {fileID: 1744577011}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &935338571
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935338565}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6cb359232f7136e42ac6cc412852a94c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &960242312
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,12 +1003,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6569068832748923569, guid: d992d0f427e602e42ad16d4c01dc99e0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.477938
+      objectReference: {fileID: 0}
+    - target: {fileID: 6569068832748923569, guid: d992d0f427e602e42ad16d4c01dc99e0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.4390526
+      objectReference: {fileID: 0}
+    - target: {fileID: 6569068832748923569, guid: d992d0f427e602e42ad16d4c01dc99e0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.3364286
+      objectReference: {fileID: 0}
+    - target: {fileID: 6569068832748923569, guid: d992d0f427e602e42ad16d4c01dc99e0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6569068832748923569, guid: d992d0f427e602e42ad16d4c01dc99e0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.44
       objectReference: {fileID: 0}
     - target: {fileID: 6569068832748923569, guid: d992d0f427e602e42ad16d4c01dc99e0, type: 3}
       propertyPath: m_LocalPosition.z
