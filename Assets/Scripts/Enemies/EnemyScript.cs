@@ -21,12 +21,12 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     
 
-    public void Damaged()
+    virtual public void Damaged()
     {
         //Efectos al destruir a este enemigo
         Destroy(gameObject);
     }
-    public void Stunned(float EffectTime)
+    virtual public void Stunned(float EffectTime)
     {
         if(StunnedRoutine!= null)
         {
@@ -36,7 +36,7 @@ public class EnemyScript : MonoBehaviour
         StunnedRoutine = StartCoroutine(StunnedEnemy(EffectTime));
     }
 
-    IEnumerator StunnedEnemy(float EffectTime)
+    virtual protected IEnumerator StunnedEnemy(float EffectTime)
     {
         
         stunned = true;
@@ -53,14 +53,14 @@ public class EnemyScript : MonoBehaviour
     }
 
 
-    protected void OnCollisionEnter(Collision collision)
+    virtual protected void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject == Player & StunnedRoutine == null)
         {
             collision.gameObject.GetComponent<PlayerMovement>().OnPlayerDamaged(false);
         }
     }
-    protected void OnCollisionStay(Collision collision)
+    virtual protected void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject == Player & StunnedRoutine == null)
         {
