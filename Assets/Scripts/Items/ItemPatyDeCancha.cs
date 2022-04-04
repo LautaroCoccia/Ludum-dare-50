@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemPatyDeCancha : ItemParent
 {
+    [SerializeField] AudioSource noise;
     private void Awake()
     {
         Type = 3;
@@ -14,13 +15,14 @@ public class ItemPatyDeCancha : ItemParent
         if (collider.gameObject.CompareTag("Player"))
         {
             collider.gameObject.GetComponent<PlayerMovement>().OnPlayerBuffPatyDeCancha();
-
+            noise.Play();
+            GetComponent<CapsuleCollider>().enabled = false;
             if (manager != null)
             {
                 manager.OnDeleteObject(this, SpawnedOn);
 
             }
-            Destroy(gameObject);
+            Destroy(gameObject, noise.clip.length);
             
         }
     }

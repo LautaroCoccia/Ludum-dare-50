@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemTarjetaRoja : ItemParent
 {
     [SerializeField] Vector3 DamageSize;
+    [SerializeField] AudioSource noise;
     private void Awake()
     {
         Type = 4;
@@ -16,7 +17,9 @@ public class ItemTarjetaRoja : ItemParent
         
         if (collider.gameObject.CompareTag("Player"))
         {
-            foreach(RaycastHit raycastHit in Physics.BoxCastAll(gameObject.transform.position, DamageSize, transform.forward,transform.rotation) )
+            GetComponent<CapsuleCollider>().enabled = false;
+            noise.Play();
+            foreach (RaycastHit raycastHit in Physics.BoxCastAll(gameObject.transform.position, DamageSize, transform.forward,transform.rotation) )
             {
                 if (raycastHit.transform.CompareTag("Enemy"))
                 {
@@ -28,7 +31,7 @@ public class ItemTarjetaRoja : ItemParent
                 manager.OnDeleteObject(this, SpawnedOn);
 
             }
-            Destroy(gameObject);
+            Destroy(gameObject, noise.clip.length);
         }
     }
 }

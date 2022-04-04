@@ -6,6 +6,7 @@ public class ItemViajero : ItemParent
 {
     [SerializeField] float effectTime;
     [SerializeField] Vector3 effectForce;
+    [SerializeField] AudioSource noise;
 
     private void Awake()
     {
@@ -17,13 +18,14 @@ public class ItemViajero : ItemParent
         if (other.gameObject.CompareTag("Player"))
         {
             Camera.main.GetComponent<CameraController>().OnCameraShake(effectTime, effectForce);
-
+            GetComponent<CapsuleCollider>().enabled = false;
+            noise.Play();
             if (manager != null)
             {
                 manager.OnDeleteObject(this, SpawnedOn);
 
             }
-            Destroy(gameObject);
+            Destroy(gameObject, noise.clip.length);
         }
     }
 }
