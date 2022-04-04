@@ -960,6 +960,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2015000405206082642, guid: ba2f59bbe7a8c4345aec76db06458d66, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 23e3ea7aa5ddefb46a9caaef779cdb34, type: 2}
     - target: {fileID: 2015000405206082644, guid: ba2f59bbe7a8c4345aec76db06458d66, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.01
