@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/La posta/MainMenu.unity
     guid: 0d52c965cc42bd14e80cef7a31ffcf5f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Taro.unity
     guid: 7e80ab88f43c9fe4f8830ba0bb1c12b3
+  - enabled: 1
+    path: Assets/Scenes/La posta/Gameplay.unity
+    guid: 2a5d069576f72c74eb6b1a6f7aeb796d
   m_configObjects: {}
