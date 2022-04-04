@@ -9,6 +9,7 @@ public class carrito_horizontal : MonoBehaviour
     private Vector3 vector_sur = new Vector3(-1, 0, 0);
     public GameObject Player;
     public int speed = 8;
+    public SpriteRenderer sr;
 
     private AudioSource Mine;
 
@@ -24,6 +25,16 @@ public class carrito_horizontal : MonoBehaviour
             Carrito_vector = vector_sur;
         }
         Mine = GetComponent<AudioSource>();
+        
+        
+        if (transform.position.x > 0)
+        {
+            sr.flipX = true;
+        }
+        if (transform.position.x < 0)
+        {
+            sr.flipX = false;
+        }
 
     }
     void Update()

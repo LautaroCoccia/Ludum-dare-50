@@ -10,7 +10,9 @@ public class carrito_definitivo : MonoBehaviour
     public GameObject Player;
     public int speed = 8;
     private AudioSource Mine;
-
+    public Sprite front;
+    public Sprite back;
+    public SpriteRenderer sr;
     void Start()
     {
         if (transform.position.z <= -3)
@@ -23,6 +25,16 @@ public class carrito_definitivo : MonoBehaviour
             Carrito_vector = vector_sur;
         }
         Mine = GetComponent<AudioSource>();
+
+        if (transform.position.x > 0)
+        {
+            sr.sprite = back;
+        }
+        if (transform.position.x < 0)
+        {
+            sr.sprite = front;
+        }
+
     }
     void Update()
     {
