@@ -27,8 +27,6 @@ public class PlayerMovement : MonoBehaviour
 
     GameObject mainCamera;
 
-    //manaos
-    int directionMultiplier = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +42,6 @@ public class PlayerMovement : MonoBehaviour
     {
         hor = Input.GetAxisRaw("Horizontal");
         ver = Input.GetAxisRaw("Vertical");
-<<<<<<< HEAD
         movementDirection = new Vector3(hor * manaosInverseEffect, 0, ver * manaosInverseEffect).normalized;
 
         if (rb.velocity.x != 0  || rb.velocity.z != 0)
@@ -69,9 +66,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         
-=======
-        movementDirection = new Vector3(hor * manaosInverseEffect * directionMultiplier, 0, ver * manaosInverseEffect * directionMultiplier);
->>>>>>> Taro
 
         /*      Silenciado temporalmente hasta tener sprites
         if(movementDirection.x <0)
@@ -106,13 +100,6 @@ public class PlayerMovement : MonoBehaviour
         //    Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
         //    rb.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
         //}
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.tag == "Ground")
-        {
-            canJump = true;
-        }
     }
 
     public void OnPlayerDamaged(bool _Lethal)
