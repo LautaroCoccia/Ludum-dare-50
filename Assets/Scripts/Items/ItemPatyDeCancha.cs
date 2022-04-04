@@ -2,16 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemPatyDeCancha : MonoBehaviour
+public class ItemPatyDeCancha : ItemParent
 {
-    
+    [SerializeField] AudioSource noise;
+    private void Awake()
+    {
+        Type = 3;
+    }
     private void OnTriggerStay(Collider collider)
     {
-        Debug.Log("Colided: " + collider.gameObject.tag);
+        
         if (collider.gameObject.CompareTag("Player"))
         {
             collider.gameObject.GetComponent<PlayerMovement>().OnPlayerBuffPatyDeCancha();
-            Destroy(gameObject);
+            noise.Play();
+            GetComponent<CapsuleCollider>().enabled = false;
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
+            if (manager != null)
+            {
+                manager.OnDeleteObject(this, SpawnedOn);
+
+            }
+            Destroy(gameObject, noise.clip.length);
+            
         }
     }
 }

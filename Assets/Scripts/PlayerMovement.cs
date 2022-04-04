@@ -5,11 +5,13 @@ using System;
 public class PlayerMovement : MonoBehaviour
 {
     public static Action OnDie;
-    [SerializeField] float movementSpeed;
+    public float movementSpeed;
     [SerializeField] float rotationSpeed;
     [SerializeField] float jumpForce;
     [SerializeField] Rigidbody rb;
     [SerializeField] SpriteRenderer sr;
+    [SerializeField] AudioSource RunRun;
+    [SerializeField] bool isMoving;
 
     [SerializeField] bool canJump = true;
     float hor;
@@ -20,13 +22,12 @@ public class PlayerMovement : MonoBehaviour
     Coroutine ShakiraRoutine;
     Coroutine ManaosRoutine;
     private int manaosInverseEffect;
+    bool lost;
 
     Vector3 movementDirection;
 
     GameObject mainCamera;
 
-    //manaos
-    int directionMultiplier = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         mainCamera = Camera.main.gameObject;
 
+        lost = false;
         manaosInverseEffect = 1;
     }
 
@@ -42,7 +44,30 @@ public class PlayerMovement : MonoBehaviour
     {
         hor = Input.GetAxisRaw("Horizontal");
         ver = Input.GetAxisRaw("Vertical");
-        movementDirection = new Vector3(hor * manaosInverseEffect * directionMultiplier, 0, ver * manaosInverseEffect * directionMultiplier);
+        movementDirection = new Vector3(hor * manaosInverseEffect, 0, ver * manaosInverseEffect).normalized;
+
+        if (rb.velocity.x != 0  || rb.velocity.z != 0)
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
+
+        if (isMoving == true && lost == false)
+        {
+            if (!RunRun.isPlaying)
+            {
+                RunRun.Play();
+            }
+        }
+        else
+        {
+            RunRun.Stop();
+        }
+
+        
 
         /*      Silenciado temporalmente hasta tener sprites
         if(movementDirection.x <0)
@@ -54,16 +79,18 @@ public class PlayerMovement : MonoBehaviour
             sr.flipX = false;
         }
         */
-        //movementDirection.Normalize();
-        //if (movementDirection != Vector3.zero)
-        //{
-        //    Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-        //    transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
-        //}
+            //movementDirection.Normalize();
+            //if (movementDirection != Vector3.zero)
+            //{
+            //    Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+            //    transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+            //}
     }
     private void FixedUpdate()
     {
         rb.velocity = new Vector3(movementDirection.x * movementSpeed, rb.velocity.y, movementDirection.z * movementSpeed);
+
+        
 
         if(Input.GetKeyDown(KeyCode.Space) && canJump)
         {
@@ -76,28 +103,28 @@ public class PlayerMovement : MonoBehaviour
         //    rb.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
         //}
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.tag == "Ground")
-        {
-            canJump = true;
-        }
-    }
 
     public void OnPlayerDamaged(bool _Lethal)
     {
-        if(isInvulnerable == false)
+        if(isInvulnerable == false && ShakiraRoutine == null)
         {
             if (isShielded == false)
             {
                 //EL JUGADOR MUERE
                 ///ejecutar animaciones y dem�s
-                Debug.Log("KILL LA KILL");
+                lost = true;
+                RunRun.Stop();
+
+                AudioSource[] cameraSound = mainCamera.GetComponents<AudioSource>();
+                Debug.Log(cameraSound.Length);
+                cameraSound[0].Stop();
+                cameraSound[1].Stop();
+                cameraSound[2].Play();
                 OnDie?.Invoke(); 
             }
             else
             {
-                Debug.Log("BLOQUEADO!!");
+               
                 isShielded = false;
                 mainCamera.GetComponent<CameraController>().OnCameraShake(1,new Vector3(1,1,0));
                 StartCoroutine(PlayerInvulnerabilityWindow());
@@ -105,11 +132,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            Debug.Log("IIINMOOORTAAAALLL!!!");
+            
         }
         
     }
 
+    
     #region Items Y sus timers
 
     //el jugador recibe el escudo
@@ -147,7 +175,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator PlayerShakiraEffect(float Tiempo)
     {
-        isInvulnerable = true;
+        
         float Timer = Tiempo;
         //bucle que se repite, para animaci�nes o efectos
         while (Timer > 0)
@@ -156,7 +184,6 @@ public class PlayerMovement : MonoBehaviour
             Timer -= Time.deltaTime;
         }
 
-        isInvulnerable = false;
         ShakiraRoutine = null;
     }
 
@@ -168,7 +195,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator PlayerPattyBuff(float Tiempo, float multiplicadorVelocidad)
     {
         
-        movementSpeed *= multiplicadorVelocidad;
+        movementSpeed += multiplicadorVelocidad;
         float Timer = Tiempo;
         while (Timer > 0)
         {
@@ -176,7 +203,7 @@ public class PlayerMovement : MonoBehaviour
             Timer -= Time.deltaTime;
         }
 
-        movementSpeed /= multiplicadorVelocidad;
+        movementSpeed -= multiplicadorVelocidad;
     }
 
 
@@ -186,7 +213,7 @@ public class PlayerMovement : MonoBehaviour
         //si el efecto shakira esta activo, se resetea el timer
         if (ManaosRoutine != null)
         {
-            StopCoroutine(ShakiraRoutine);
+            StopCoroutine(ManaosRoutine);
 
         }
         ManaosRoutine = StartCoroutine(ManaosEffect(Tiempo));
@@ -204,6 +231,13 @@ public class PlayerMovement : MonoBehaviour
         }
         manaosInverseEffect = 1;
         ManaosRoutine = null;
+    }
+
+    public IEnumerator pelotazo()
+    {
+        movementSpeed = 0;
+        yield return new WaitForSeconds(2f);
+        movementSpeed = 8.5f;
     }
 
     #endregion
