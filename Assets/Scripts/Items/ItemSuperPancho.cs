@@ -22,6 +22,7 @@ public class ItemSuperPancho : ItemParent
             collider.gameObject.GetComponent<PlayerMovement>().OnPlayerBuffSuperPancho(effectTime, multiplicadorVelocidad);
             noise.Play();
             GetComponent<CapsuleCollider>().enabled = false;
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
             if (manager != null)
             {
                 manager.OnDeleteObject(this, SpawnedOn);

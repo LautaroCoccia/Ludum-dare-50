@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioSource RunRun;
     [SerializeField] bool isMoving;
 
+    [SerializeField] GameObject[] Icons;
+
     [SerializeField] bool canJump = true;
     float hor;
     float ver;
@@ -22,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     Coroutine ShakiraRoutine;
     Coroutine ManaosRoutine;
     private int manaosInverseEffect;
+    bool lost;
 
     Vector3 movementDirection;
 
@@ -34,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         mainCamera = Camera.main.gameObject;
 
+        lost = false;
         manaosInverseEffect = 1;
     }
 
@@ -53,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
             isMoving = false;
         }
 
-        if (isMoving == true)
+        if (isMoving == true && lost == false)
         {
             if (!RunRun.isPlaying)
             {
@@ -110,7 +114,21 @@ public class PlayerMovement : MonoBehaviour
             {
                 //EL JUGADOR MUERE
                 ///ejecutar animaciones y dem�s
-                
+                lost = true;
+                RunRun.Stop();
+
+                AudioSource[] cameraSound = mainCamera.GetComponents<AudioSource>();
+                Debug.Log(cameraSound.Length);
+
+                Icons[0].SetActive(false);
+                Icons[1].SetActive(false);
+                Icons[2].SetActive(false);
+                Icons[3].SetActive(false);
+
+
+                cameraSound[0].Stop();
+                cameraSound[1].Stop();
+                cameraSound[2].Play();
                 OnDie?.Invoke(); 
             }
             else
@@ -118,6 +136,7 @@ public class PlayerMovement : MonoBehaviour
                
                 isShielded = false;
                 mainCamera.GetComponent<CameraController>().OnCameraShake(1,new Vector3(1,1,0));
+                Icons[3].SetActive(false);
                 StartCoroutine(PlayerInvulnerabilityWindow());
             }
         }
@@ -135,6 +154,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnPlayerBuffPatyDeCancha()
     {
         isShielded = true;
+        Icons[3].SetActive(true);
     }
 
     //cuando se rompe el escudo, se ejecuta esto:
@@ -161,6 +181,7 @@ public class PlayerMovement : MonoBehaviour
             StopCoroutine(ShakiraRoutine);
             
         }
+        Icons[1].SetActive(true);
         ShakiraRoutine = StartCoroutine(PlayerShakiraEffect(Tiempo));
     }
 
@@ -174,19 +195,20 @@ public class PlayerMovement : MonoBehaviour
             yield return 0;
             Timer -= Time.deltaTime;
         }
-
+        Icons[1].SetActive(false);
         ShakiraRoutine = null;
     }
 
     public void OnPlayerBuffSuperPancho(float Tiempo, float multiplicadorVelocidad)
     {
+        Icons[2].SetActive(true);
         StartCoroutine(PlayerPattyBuff(Tiempo, multiplicadorVelocidad));
     }
 
     IEnumerator PlayerPattyBuff(float Tiempo, float multiplicadorVelocidad)
     {
         
-        movementSpeed *= multiplicadorVelocidad;
+        movementSpeed += multiplicadorVelocidad;
         float Timer = Tiempo;
         while (Timer > 0)
         {
@@ -194,7 +216,8 @@ public class PlayerMovement : MonoBehaviour
             Timer -= Time.deltaTime;
         }
 
-        movementSpeed /= multiplicadorVelocidad;
+        movementSpeed -= multiplicadorVelocidad;
+        Icons[2].SetActive(false);
     }
 
 
@@ -207,6 +230,7 @@ public class PlayerMovement : MonoBehaviour
             StopCoroutine(ManaosRoutine);
 
         }
+        Icons[0].SetActive(true);
         ManaosRoutine = StartCoroutine(ManaosEffect(Tiempo));
     }
 
@@ -222,6 +246,12 @@ public class PlayerMovement : MonoBehaviour
         }
         manaosInverseEffect = 1;
         ManaosRoutine = null;
+        Icons[0].SetActive(false);
+    }
+
+    public void bochazo()
+    {
+        StartCoroutine(pelotazo());
     }
 
     public IEnumerator pelotazo()

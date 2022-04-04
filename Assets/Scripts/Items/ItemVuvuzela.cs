@@ -8,10 +8,7 @@ public class ItemVuvuzela : ItemParent
     [SerializeField] Vector3 DamageSize;
     [SerializeField] AudioSource noise;
 
-    private void Awake()
-    {
-        Type = 6;
-    }
+    
 
     private void OnTriggerStay(Collider collider)
     {
@@ -21,6 +18,7 @@ public class ItemVuvuzela : ItemParent
         {
             noise.Play();
             GetComponent<CapsuleCollider>().enabled = false;
+            GetComponentInChildren<SpriteRenderer>().enabled = false;
             foreach (RaycastHit raycastHit in Physics.BoxCastAll(gameObject.transform.position, DamageSize, transform.forward, transform.rotation))
             {
                 if (raycastHit.transform.CompareTag("Enemy"))
