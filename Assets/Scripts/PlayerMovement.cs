@@ -5,7 +5,7 @@ using System;
 public class PlayerMovement : MonoBehaviour
 {
     public static Action OnDie;
-    [SerializeField] float movementSpeed;
+    public float movementSpeed;
     [SerializeField] float rotationSpeed;
     [SerializeField] float jumpForce;
     [SerializeField] Rigidbody rb;
@@ -223,6 +223,13 @@ public class PlayerMovement : MonoBehaviour
         }
         manaosInverseEffect = 1;
         ManaosRoutine = null;
+    }
+
+    public IEnumerator pelotazo()
+    {
+        movementSpeed = 0;
+        yield return new WaitForSeconds(2f);
+        movementSpeed = 8.5f;
     }
 
     #endregion
