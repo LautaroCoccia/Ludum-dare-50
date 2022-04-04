@@ -11,6 +11,7 @@ public class carrito_horizontal : MonoBehaviour
     public int speed = 8;
 
     private AudioSource Mine;
+    [SerializeField] SpriteRenderer sr;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class carrito_horizontal : MonoBehaviour
             Carrito_vector = vector_sur;
         }
         Mine = GetComponent<AudioSource>();
-
+        sr = GetComponentInChildren<SpriteRenderer>();
     }
     void Update()
     {
