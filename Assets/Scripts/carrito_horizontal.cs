@@ -12,6 +12,7 @@ public class carrito_horizontal : MonoBehaviour
     public SpriteRenderer sr;
 
     private AudioSource Mine;
+    [SerializeField] SpriteRenderer sr;
 
     void Start()
     {
@@ -25,17 +26,7 @@ public class carrito_horizontal : MonoBehaviour
             Carrito_vector = vector_sur;
         }
         Mine = GetComponent<AudioSource>();
-        
-        
-        if (transform.position.x > 0)
-        {
-            sr.flipX = true;
-        }
-        if (transform.position.x < 0)
-        {
-            sr.flipX = false;
-        }
-
+        sr = GetComponentInChildren<SpriteRenderer>();
     }
     void Update()
     {

@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        sr = GetComponent<SpriteRenderer>();
+        sr = GetComponentInChildren<SpriteRenderer>();
         mainCamera = Camera.main.gameObject;
 
         lost = false;
@@ -48,14 +48,7 @@ public class PlayerMovement : MonoBehaviour
         ver = Input.GetAxisRaw("Vertical");
         movementDirection = new Vector3(hor * manaosInverseEffect, 0, ver * manaosInverseEffect).normalized;
 
-        if (rb.velocity.x != 0  || rb.velocity.z != 0)
-        {
-            isMoving = true;
-        }
-        else
-        {
-            isMoving = false;
-        }
+        
 
         if (isMoving == true && lost == false)
         {
@@ -71,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
         
 
-        /*      Silenciado temporalmente hasta tener sprites
+             
         if(movementDirection.x <0)
         {
             sr.flipX = true;
@@ -80,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         {
             sr.flipX = false;
         }
-        */
+        
             //movementDirection.Normalize();
             //if (movementDirection != Vector3.zero)
             //{
