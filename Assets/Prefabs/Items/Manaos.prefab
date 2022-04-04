@@ -59,7 +59,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 158731a9751f74742b894126ac21c53a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectTime: 4
+  Type: 0
+  SpawnedOn: 0
+  manager: {fileID: 0}
+  effectTime: 3
 --- !u!1 &6786816228047301334
 GameObject:
   m_ObjectHideFlags: 0
