@@ -6,6 +6,7 @@ public class ItemVuvuzela : ItemParent
 {
     [SerializeField] float effectTime;
     [SerializeField] Vector3 DamageSize;
+    [SerializeField] AudioSource noise;
 
     
 
@@ -15,7 +16,8 @@ public class ItemVuvuzela : ItemParent
 
         if (collider.gameObject.CompareTag("Player"))
         {
-
+            noise.Play();
+            GetComponent<CapsuleCollider>().enabled = false;
             foreach (RaycastHit raycastHit in Physics.BoxCastAll(gameObject.transform.position, DamageSize, transform.forward, transform.rotation))
             {
                 if (raycastHit.transform.CompareTag("Enemy"))
@@ -31,7 +33,7 @@ public class ItemVuvuzela : ItemParent
                 manager.OnDeleteObject(this, SpawnedOn);
 
             }
-            Destroy(gameObject);
+            Destroy(gameObject, noise.clip.length);
         }
     }
 }

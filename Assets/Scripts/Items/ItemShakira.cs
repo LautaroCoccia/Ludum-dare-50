@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemShakira : ItemParent
 {
     [SerializeField] float effectTime;
+    [SerializeField] AudioSource noise;
 
     
 
@@ -14,13 +15,14 @@ public class ItemShakira : ItemParent
         if (collider.gameObject.CompareTag("Player"))
         {
             collider.gameObject.GetComponent<PlayerMovement>().OnPlayerBuffShakira(effectTime);
-
+            noise.Play();
+            GetComponent<CapsuleCollider>().enabled = false;
             if (manager != null)
             {
                 manager.OnDeleteObject(this, SpawnedOn);
 
             }
-            Destroy(gameObject);
+            Destroy(gameObject, noise.clip.length);
         }
     }
 }
