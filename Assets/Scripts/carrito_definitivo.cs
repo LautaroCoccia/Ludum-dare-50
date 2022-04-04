@@ -9,6 +9,8 @@ public class carrito_definitivo : MonoBehaviour
     private Vector3 vector_sur = new Vector3(0, 0, -1);
     public GameObject Player;
     public int speed = 8;
+    private AudioSource Mine;
+
     void Start()
     {
         if (transform.position.z <= -3)
@@ -20,7 +22,7 @@ public class carrito_definitivo : MonoBehaviour
         {
             Carrito_vector = vector_sur;
         }
-
+        Mine = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -40,6 +42,10 @@ public class carrito_definitivo : MonoBehaviour
         {
             collider.gameObject.GetComponent<PlayerMovement>().OnPlayerDamaged(false);
 
+            if (Mine.isPlaying == false)
+            {
+                Mine.Play();
+            }
         }
         if (collider.tag == "wall")
         {
@@ -48,6 +54,11 @@ public class carrito_definitivo : MonoBehaviour
         if (collider.tag == "Enemy")
         {
             Destroy(collider.gameObject);
+
+            if (Mine.isPlaying == false)
+            {
+                Mine.Play();
+            }
         }
     }
 
