@@ -9,7 +9,6 @@ public class carrito_horizontal : MonoBehaviour
     private Vector3 vector_sur = new Vector3(-1, 0, 0);
     public GameObject Player;
     public int speed = 8;
-    public SpriteRenderer sr;
 
     private AudioSource Mine;
     [SerializeField] SpriteRenderer sr;
