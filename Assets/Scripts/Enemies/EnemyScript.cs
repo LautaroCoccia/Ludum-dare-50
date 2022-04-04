@@ -38,6 +38,7 @@ public class EnemyScript : MonoBehaviour
 
     IEnumerator StunnedEnemy(float EffectTime)
     {
+        
         stunned = true;
         float _savedSpeed = MovementSpeed;
         MovementSpeed = 0;

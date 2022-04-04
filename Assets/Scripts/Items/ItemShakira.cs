@@ -2,18 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemShakira : MonoBehaviour
+public class ItemShakira : ItemParent
 {
     [SerializeField] float effectTime;
-    [SerializeField] AudioSource chakira;
+
+    private void Awake()
+    {
+        Type = 1;
+    }
+
     private void OnTriggerStay(Collider collider)
     {
-        Debug.Log("Colided: " + collider.gameObject.name);
+        
         if (collider.gameObject.CompareTag("Player"))
         {
             collider.gameObject.GetComponent<PlayerMovement>().OnPlayerBuffShakira(effectTime);
-            GetComponent<CapsuleCollider>().enabled = false;
-            Destroy(gameObject, chakira.clip.length);
+
+            if (manager != null)
+            {
+                manager.OnDeleteObject(this, SpawnedOn);
+
+            }
+            Destroy(gameObject);
         }
     }
 }

@@ -2,20 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemViajero : MonoBehaviour
+public class ItemViajero : ItemParent
 {
     [SerializeField] float effectTime;
     [SerializeField] Vector3 effectForce;
-    [SerializeField] AudioSource escabio;
+
+    private void Awake()
+    {
+        Type = 5;
+    }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            escabio.Play();
             Camera.main.GetComponent<CameraController>().OnCameraShake(effectTime, effectForce);
-            GetComponent<CapsuleCollider>().enabled = false;
-            Destroy(gameObject, escabio.clip.length);
+
+            if (manager != null)
+            {
+                manager.OnDeleteObject(this, SpawnedOn);
+
+            }
+            Destroy(gameObject);
         }
     }
 }

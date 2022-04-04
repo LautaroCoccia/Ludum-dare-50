@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
     {
         hor = Input.GetAxisRaw("Horizontal");
         ver = Input.GetAxisRaw("Vertical");
-        movementDirection = new Vector3(hor * manaosInverseEffect, 0, ver * manaosInverseEffect);
+        movementDirection = new Vector3(hor * manaosInverseEffect, 0, ver * manaosInverseEffect).normalized;
 
         if (rb.velocity.x != 0  || rb.velocity.z != 0)
         {
@@ -104,18 +104,18 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnPlayerDamaged(bool _Lethal)
     {
-        if(isInvulnerable == false)
+        if(isInvulnerable == false && ShakiraRoutine == null)
         {
             if (isShielded == false)
             {
                 //EL JUGADOR MUERE
                 ///ejecutar animaciones y dem�s
-                Debug.Log("KILL LA KILL");
+                
                 OnDie?.Invoke(); 
             }
             else
             {
-                Debug.Log("BLOQUEADO!!");
+               
                 isShielded = false;
                 mainCamera.GetComponent<CameraController>().OnCameraShake(1,new Vector3(1,1,0));
                 StartCoroutine(PlayerInvulnerabilityWindow());
@@ -123,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            Debug.Log("IIINMOOORTAAAALLL!!!");
+            
         }
         
     }
@@ -166,7 +166,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator PlayerShakiraEffect(float Tiempo)
     {
-        isInvulnerable = true;
+        
         float Timer = Tiempo;
         //bucle que se repite, para animaci�nes o efectos
         while (Timer > 0)
@@ -175,7 +175,6 @@ public class PlayerMovement : MonoBehaviour
             Timer -= Time.deltaTime;
         }
 
-        isInvulnerable = false;
         ShakiraRoutine = null;
     }
 
@@ -205,7 +204,7 @@ public class PlayerMovement : MonoBehaviour
         //si el efecto shakira esta activo, se resetea el timer
         if (ManaosRoutine != null)
         {
-            StopCoroutine(ShakiraRoutine);
+            StopCoroutine(ManaosRoutine);
 
         }
         ManaosRoutine = StartCoroutine(ManaosEffect(Tiempo));
