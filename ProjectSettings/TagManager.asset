@@ -9,6 +9,7 @@ TagManager:
   - wall
   - Enemies
   - PowerUp
+  - 10
   layers:
   - Default
   - TransparentFX
