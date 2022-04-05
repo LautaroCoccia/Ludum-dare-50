@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1741,8 +1741,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Tomas Hirsch\r\nJuan Manuel Del Valle\r\nGonzalo Antu\xF1a\r\nMartin Lopez
-    \r\nJuan Pablo Kavulakian\r\nTadeo Gonzalez Diaz "
+  m_text: "Tomas Eduardo Hirsch Rebora\nJuan Manuel Del Valle\r\nGonzalo Antu\xF1a\r\nMartin
+    Lopez \r\nJuan Pablo Kavulakian\r\nTadeo Gonzalez Diaz "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e75f79b26a0a0054c816dbc088b84b4f, type: 2}
   m_sharedMaterial: {fileID: -3992509679153456004, guid: e75f79b26a0a0054c816dbc088b84b4f, type: 2}
@@ -1769,8 +1769,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30.6
-  m_fontSizeBase: 30.6
+  m_fontSize: 28.02
+  m_fontSizeBase: 28.02
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2286,7 +2286,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 517.7, y: -132.9}
+  m_AnchoredPosition: {x: 477.2, y: -132.9}
   m_SizeDelta: {x: 491.8, y: 112.096436}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5300316948430422660
@@ -2981,7 +2981,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Run! Wacho! Run!
+  m_text: Run Wacho Run
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e75f79b26a0a0054c816dbc088b84b4f, type: 2}
   m_sharedMaterial: {fileID: -3992509679153456004, guid: e75f79b26a0a0054c816dbc088b84b4f, type: 2}
@@ -3008,8 +3008,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 74.2
-  m_fontSizeBase: 74.2
+  m_fontSize: 92.94
+  m_fontSizeBase: 92.94
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3092,7 +3092,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -1.3, y: 116.8}
+  m_AnchoredPosition: {x: -1.3, y: 130.1}
   m_SizeDelta: {x: 907.1, y: 88.64356}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &5950683914924670004
@@ -4595,7 +4595,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 519.2, y: 213}
+  m_AnchoredPosition: {x: 476.4, y: 205.3}
   m_SizeDelta: {x: 865.8, y: 112.096436}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6796404889906656672
