@@ -1438,6 +1438,14 @@ PrefabInstance:
       propertyPath: m_text
       value: 0:0
       objectReference: {fileID: 0}
+    - target: {fileID: 3659828616469755465, guid: 4ef1204e1364625468167ec2a6b90e1c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e75f79b26a0a0054c816dbc088b84b4f, type: 2}
+    - target: {fileID: 3659828616469755465, guid: 4ef1204e1364625468167ec2a6b90e1c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3992509679153456004, guid: e75f79b26a0a0054c816dbc088b84b4f, type: 2}
     - target: {fileID: 4069032040204181905, guid: 4ef1204e1364625468167ec2a6b90e1c, type: 3}
       propertyPath: m_Name
       value: UIRetryButton
