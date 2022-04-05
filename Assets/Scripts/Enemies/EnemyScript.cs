@@ -10,12 +10,14 @@ public class EnemyScript : MonoBehaviour
     protected Rigidbody RB;
     protected Coroutine StunnedRoutine;
     protected bool stunned;
-    
+    [SerializeField] protected SpriteRenderer sr;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
         RB = gameObject.GetComponent<Rigidbody>();
         Player = GameObject.FindGameObjectWithTag("Player");
+        sr = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
