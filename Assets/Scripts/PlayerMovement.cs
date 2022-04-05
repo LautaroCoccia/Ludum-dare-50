@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioSource RunRun;
     [SerializeField] bool isMoving;
 
+    [SerializeField] Animator myanim;
+
     [SerializeField] GameObject[] Icons;
 
     [SerializeField] bool canJump = true;
@@ -36,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         sr = GetComponentInChildren<SpriteRenderer>();
         mainCamera = Camera.main.gameObject;
-
+        myanim = GetComponentInChildren<Animator>();
         lost = false;
         manaosInverseEffect = 1;
     }
@@ -48,7 +50,14 @@ public class PlayerMovement : MonoBehaviour
         ver = Input.GetAxisRaw("Vertical");
         movementDirection = new Vector3(hor * manaosInverseEffect, 0, ver * manaosInverseEffect).normalized;
 
-        
+        if (rb.velocity.magnitude == 0)
+        {
+            myanim.speed = 0;
+        }
+        else
+        {
+            myanim.speed = 1;
+        }
 
         if (isMoving == true && lost == false)
         {

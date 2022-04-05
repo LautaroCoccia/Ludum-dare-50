@@ -12,6 +12,8 @@ public class carrito_definitivo : MonoBehaviour
     private AudioSource Mine;
     [SerializeField] SpriteRenderer sr;
 
+    public Sprite front;
+    public Sprite back;
     void Start()
     {
         if (transform.position.z <= -3)
@@ -24,11 +26,19 @@ public class carrito_definitivo : MonoBehaviour
             Carrito_vector = vector_sur;
         }
         Mine = GetComponent<AudioSource>();
-        sr = GetComponentInChildren<SpriteRenderer>();
+
+        if (transform.position.x > 0)
+        {
+            sr.sprite = back;
+        }
+        if (transform.position.x < 0)
+        {
+            sr.sprite = front;
+        }
+
     }
     void Update()
     {
-        
         if (transform.position.z >= -3)
         {
             transform.Translate(Carrito_vector * speed * Time.deltaTime);
