@@ -63,7 +63,7 @@ MonoBehaviour:
   Type: 0
   SpawnedOn: 0
   manager: {fileID: 0}
-  DamageSize: {x: 9, y: 4, z: 9}
+  DamageSize: {x: 100, y: 4, z: 100}
   noise: {fileID: 245725497856276728}
 --- !u!82 &245725497856276728
 AudioSource:
