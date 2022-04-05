@@ -1,0 +1,23 @@
+﻿<TextureAtlas imagePath="Guardia.png">
+	<SubTexture name="IDL dance0000" x="0" y="0" w="536" h="861"/>
+	<SubTexture name="IDL dance0001" x="536" y="0" w="536" h="861"/>
+	<SubTexture name="IDL dance0002" x="1072" y="0" w="536" h="861"/>
+	<SubTexture name="IDL dance0003" x="1608" y="0" w="536" h="861"/>
+	<SubTexture name="IDL dance0004" x="2144" y="0" w="536" h="861"/>
+	<SubTexture name="IDL dance0005" x="2680" y="0" w="536" h="861"/>
+	<SubTexture name="IDL dance0006" x="3216" y="0" w="536" h="861"/>
+	<SubTexture name="IDL dance0007" x="0" y="861" w="536" h="861"/>
+	<SubTexture name="IDL dance0008" x="536" y="861" w="536" h="861"/>
+	<SubTexture name="IDL dance0009" x="1072" y="861" w="536" h="861"/>
+	<SubTexture name="IDL dance0010" x="1608" y="861" w="536" h="861"/>
+	<SubTexture name="IDL dance0011" x="2144" y="861" w="536" h="861"/>
+	<SubTexture name="IDL dance0012" x="2680" y="861" w="536" h="861"/>
+	<SubTexture name="IDL dance0013" x="3216" y="861" w="536" h="861"/>
+	<SubTexture name="IDL dance0014" x="0" y="1722" w="536" h="861"/>
+	<SubTexture name="IDL dance0015" x="536" y="1722" w="536" h="861"/>
+	<SubTexture name="IDL dance0016" x="1072" y="1722" w="536" h="861"/>
+	<SubTexture name="IDL dance0017" x="1608" y="1722" w="536" h="861"/>
+	<SubTexture name="IDL dance0018" x="2144" y="1722" w="536" h="861"/>
+	<SubTexture name="IDL dance0019" x="2680" y="1722" w="536" h="861"/>
+	<SubTexture name="IDL dance0020" x="3216" y="1722" w="536" h="861"/>
+</TextureAtlas>

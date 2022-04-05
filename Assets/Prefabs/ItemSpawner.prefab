@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4947592812908348459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4947592812908348453}
+  - component: {fileID: 4947592812908348458}
+  m_Layer: 0
+  m_Name: ItemSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4947592812908348453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4947592812908348459}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4947592812908348458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4947592812908348459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7efc9d8cd09236b488f2dda5eb889575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PowerUpList:
+  - agarrable: {fileID: 1995450091815172081, guid: 9b08ba494f98fa442ad6959f37e9a2f6, type: 3}
+    percentileChance: 20
+  - agarrable: {fileID: 921102162902003996, guid: 03e3294e77062be4c977d61a7454536e, type: 3}
+    percentileChance: 5
+  - agarrable: {fileID: 6475604050570995382, guid: 1966bd4b32ccf2f4298704227ae8d02d, type: 3}
+    percentileChance: 20
+  - agarrable: {fileID: 2242071314914497670, guid: 79485fe8409af3b40b2ae7d75602f119, type: 3}
+    percentileChance: 10
+  - agarrable: {fileID: 5830051171569954019, guid: b54983966ad8a5d4fa74209e5521c90a, type: 3}
+    percentileChance: 5
+  - agarrable: {fileID: 3094250150246117050, guid: 8b52ed30054f409409efe66561db4931, type: 3}
+    percentileChance: 25
+  - agarrable: {fileID: 6115342380601317623, guid: 98542fc28550b9c448137edbc6a5b745, type: 3}
+    percentileChance: 10
+  positions:
+  - pos: {fileID: 0}
+    isUsed: 0
+    index: 0
+  - pos: {fileID: 0}
+    isUsed: 0
+    index: 0
+  TimerSpawn: 3
