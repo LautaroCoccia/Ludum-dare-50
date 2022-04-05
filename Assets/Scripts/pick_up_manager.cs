@@ -69,7 +69,6 @@ public class pick_up_manager : MonoBehaviour
                 {
                     indexAux += 1;
                     Chance += PowerUpList[indexAux].percentileChance;
-                    Debug.Log("debajo del limite: " + Chance);
                 }
                 
             
