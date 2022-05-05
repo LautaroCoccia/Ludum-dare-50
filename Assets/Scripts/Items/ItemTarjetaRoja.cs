@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class ItemTarjetaRoja : ItemParent
 {
@@ -11,6 +12,13 @@ public class ItemTarjetaRoja : ItemParent
         Type = 4;
     }
 
+    public string getTarjetaRoja()
+    {
+        return tarjeta;
+    }
+
+    public string tarjeta = "tarjetaRoja";
+
     private void OnTriggerStay(Collider collider)
     {
 
@@ -20,6 +28,8 @@ public class ItemTarjetaRoja : ItemParent
             GetComponent<CapsuleCollider>().enabled = false;
             GetComponentInChildren<SpriteRenderer>().enabled = false;
             noise.Play();
+            //AnalyticsResult analyticsResult = Analytics.CustomEvent("PickUp_TarjetaRoja", getTarjetaRoja());
+            //Debug.Log("tarjetaRojaResult: " + analyticsResult);
             foreach (RaycastHit raycastHit in Physics.BoxCastAll(gameObject.transform.position, DamageSize, transform.forward,transform.rotation) )
             {
                 if (raycastHit.transform.CompareTag("Enemy"))

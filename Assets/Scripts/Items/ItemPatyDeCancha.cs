@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class ItemPatyDeCancha : ItemParent
 {
@@ -8,6 +9,11 @@ public class ItemPatyDeCancha : ItemParent
     private void Awake()
     {
         Type = 3;
+    }
+
+    private string getPatyCancha()
+    {
+        return "paty";
     }
     private void OnTriggerStay(Collider collider)
     {
@@ -18,6 +24,8 @@ public class ItemPatyDeCancha : ItemParent
             noise.Play();
             GetComponent<CapsuleCollider>().enabled = false;
             GetComponentInChildren<SpriteRenderer>().enabled = false;
+            AnalyticsResult analyticsResult = Analytics.CustomEvent("PickUp_PatyCancha" + getPatyCancha());
+            Debug.Log("patyCanchaResult: " + analyticsResult);
             if (manager != null)
             {
                 manager.OnDeleteObject(this, SpawnedOn);

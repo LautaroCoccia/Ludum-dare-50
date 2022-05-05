@@ -2,6 +2,9 @@
 using UnityEngine;
 public class GameManager : MonoBehaviour
 {
+
+
+    
     private static GameManager _instanceGameManager;
     public static GameManager Get()
     {
@@ -30,4 +33,5 @@ public class GameManager : MonoBehaviour
 
         Application.Quit();
     }
+
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Analytics;
 public class PlayerMovement : MonoBehaviour
 {
     public static Action OnDie;
@@ -108,6 +109,10 @@ public class PlayerMovement : MonoBehaviour
         //}
     }
 
+    public string playerDead()
+    {
+        return "playerDead";
+    }
     public void OnPlayerDamaged(bool _Lethal)
     {
         if(isInvulnerable == false && ShakiraRoutine == null)
@@ -118,6 +123,12 @@ public class PlayerMovement : MonoBehaviour
                 ///ejecutar animaciones y dem�s
                 lost = true;
                 RunRun.Stop();
+                //AnalyticsResult analyticsResult = Analytics.CustomEvent("LevelComplete", playerDead());
+                //Debug.Log("analyticsResult: " + analyticsResult);
+
+
+                //
+
 
                 AudioSource[] cameraSound = mainCamera.GetComponents<AudioSource>();
                 Debug.Log(cameraSound.Length);

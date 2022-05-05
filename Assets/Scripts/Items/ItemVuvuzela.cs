@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class ItemVuvuzela : ItemParent
 {
@@ -8,7 +9,10 @@ public class ItemVuvuzela : ItemParent
     [SerializeField] Vector3 DamageSize;
     [SerializeField] AudioSource noise;
 
-    
+    public string getVuvuzela()
+    {
+        return "vuvuzela";
+    }
 
     private void OnTriggerStay(Collider collider)
     {
@@ -19,6 +23,8 @@ public class ItemVuvuzela : ItemParent
             noise.Play();
             GetComponent<CapsuleCollider>().enabled = false;
             GetComponentInChildren<SpriteRenderer>().enabled = false;
+            AnalyticsResult analyticsResult = Analytics.CustomEvent("PickUp_Vuvuzela" + getVuvuzela());
+            Debug.Log("vuvuzelaResults: " + analyticsResult);
             foreach (RaycastHit raycastHit in Physics.BoxCastAll(gameObject.transform.position, DamageSize, transform.forward, transform.rotation))
             {
                 if (raycastHit.transform.CompareTag("Enemy"))

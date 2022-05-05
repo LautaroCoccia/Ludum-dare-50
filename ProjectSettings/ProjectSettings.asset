@@ -674,7 +674,14 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
+    Build: 0
+    Collab: 0
+    Game Performance: 0
+    Legacy Analytics: 1
+    Purchasing: 0
+    UDP: 0
     UNet: 1
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -688,10 +695,10 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: ff62600b-12fb-4134-81ee-f79beb71a430
+  cloudProjectId: b7135350-6d02-416f-b281-501219a06232
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Run Wacho Run
+  projectName: Run Wacho Run (1)
   organizationId: gonzaloantuna392
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

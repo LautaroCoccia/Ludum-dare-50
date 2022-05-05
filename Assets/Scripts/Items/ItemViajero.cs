@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class ItemViajero : ItemParent
 {
@@ -8,7 +9,10 @@ public class ItemViajero : ItemParent
     [SerializeField] Vector3 effectForce;
     [SerializeField] AudioSource noise;
 
-    
+    public string getFernet()
+    {
+        return "fernet";
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -18,6 +22,8 @@ public class ItemViajero : ItemParent
             GetComponent<CapsuleCollider>().enabled = false;
             GetComponentInChildren<SpriteRenderer>().enabled = false;
             noise.Play();
+            AnalyticsResult analyticsResult = Analytics.CustomEvent("PickUp_Fernet" + getFernet());
+            Debug.Log("fernetResults: " + analyticsResult);
             if (manager != null)
             {
                 manager.OnDeleteObject(this, SpawnedOn);
